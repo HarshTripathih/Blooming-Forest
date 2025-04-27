@@ -53,6 +53,7 @@ module.exports = {
         nostalgic: ['"The Nostalgic"', 'sans-serif'],
         belkinregular: ['"Belkin Regular"', 'sans-serif'],
         belkinlight: ['"Belkin Light"', 'sans-serif'],
+        waterfallregular: ['"Waterfall Regular"', 'sans-serif'],
         bokor: ["var(--font-bokor)"],
       },
     },

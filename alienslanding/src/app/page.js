@@ -151,6 +151,18 @@ const animate = () => {
     return () => cancelAnimationFrame(animationId);
   }, []);
 
+    const blooming = "Blooming";
+    const forest = "Forest";
+
+    const bloomingLetters = blooming.split("").map((letter, index) => (
+      <span key={index} className="letter">{letter}</span>
+    ));
+
+    const forestLetters = forest.split("").map((letter, index) => (
+      <span key={index} className="letter">{letter}</span>
+    ));
+
+  
 
   return (
     <div className="relative w-full h-[700vh]"> {/* total height = sections × 100vh */}
@@ -190,9 +202,10 @@ const animate = () => {
 
             {/* Center Text Content backdrop-blur-sm bg-black/40 */}
             <div className="absolute z-20 text-white text-center backdrop-blur-sm bg-black/10  p-2 xs:p-3 xsm:p-4 sm:p-6 md:p-8 rounded-2xl mx-2 xs:mx-4">
-            <h1 className="font-nostalgic bg-gradient-to-r from-stone-50 via-yellow-100 to-yellow-200 bg-clip-text text-transparent text-lg xs:text-xl xsm:text-3xl sm:text-4xl md:text-9xl lg:text-9xl font-bold mb-2 xsm:mb-4 md:p-4">
-              Blooming Forest
-            </h1>
+              <h1 className="font-nostalgic text-lg xs:text-xl xsm:text-3xl sm:text-4xl md:text-9xl lg:text-9xl mb-2 xsm:mb-4 md:p-4">
+                <span className="font-nostalgic p-[2px]">{bloomingLetters}</span>&nbsp;
+                <span className="font-waterfallregular text-[14rem]">{forestLetters}</span>
+              </h1>
 
               <p className="font-belkinregular text-xs xs:text-sm xsm:text-base sm:text-lg md:text-3xl mb-4 xsm:mb-6">
                 Embrace a lifestyle where the harmony of nature and <br></br> the comforts of mordern living intertwine

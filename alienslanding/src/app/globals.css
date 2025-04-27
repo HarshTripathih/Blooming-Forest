@@ -33,6 +33,15 @@
   }
 }
 
+.letter {
+  display: inline-block;
+  background: linear-gradient(45deg, rgba(245, 245, 245, 100), rgba(205, 163, 107, 1));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+
 @font-face {
   font-family: 'The Nostalgic';
   src: url('/fonts/TheNostalgic.ttf') format('truetype');
@@ -53,3 +62,11 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family:'Waterfall Regular';
+  src: url('/fonts/WaterfallRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
