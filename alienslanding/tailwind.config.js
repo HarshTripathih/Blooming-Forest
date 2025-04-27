@@ -1,3 +1,5 @@
+const { Bokor } = require('next/font/google');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -50,6 +52,8 @@ module.exports = {
       fontFamily: {
         nostalgic: ['"The Nostalgic"', 'sans-serif'],
         belkinregular: ['"Belkin Regular"', 'sans-serif'],
+        belkinlight: ['"Belkin Light"', 'sans-serif'],
+        bokor: ["var(--font-bokor)"],
       },
     },
   },

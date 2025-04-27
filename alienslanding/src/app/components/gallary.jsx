@@ -334,112 +334,154 @@
 // export default GallerySection;
 
 
-//galary 2
 
-// GallerySection.jsx
+
+
+
+
+
+//gallary 3
+
 import React from "react";
 
 const mediaBlocks = [
   {
     image: "/images/image1.jpeg",
-    overlay: { type: "video", src: "/videos/video1.mp4", width: "w-80", height: "h-96" },
+    imageWidth: "w-[20rem]", // 20rem
+    imageHeight: "h-[15rem]", // 15rem
+  },
+  {
+    videoOnly: "/videos/video1.mp4",
+    videoWidth: "w-[15rem]", // 60rem
+    videoHeight: "h-96", // 96rem
   },
   {
     image: "/images/image2.jpeg",
-    overlay: { type: "image", src: "/images/image3.jpeg", width: "w-60", height: "h-80" },
+    imageWidth: "w-[25rem]", // 20rem
+    imageHeight: "h-[13rem]", // 15rem
   },
   {
     videoOnly: "/videos/video2.mp4",
+    videoWidth: "w-80", // 60rem
+    videoHeight: "h-96", // 96rem
   },
   {
     image: "/images/image3.jpeg",
-    overlay: { type: "video", src: "/videos/video3.mp4", width: "w-80", height: "h-96" },
+    imageWidth: "w-[18rem]", // 20rem
+    imageHeight: "h-[15rem]", // 15rem
+  },
+  {
+    videoOnly: "/videos/video3.mp4",
+    videoWidth: "w-60", // 60rem
+    videoHeight: "h-96", // 96rem
   },
   {
     image: "/images/image4.jpeg",
-    overlay: { type: "image", src: "/images/image4.jpeg", width: "w-60", height: "h-80" },
+    imageWidth: "w-[20rem]", // 20rem
+    imageHeight: "h-[15rem]", // 15rem
   },
   {
     videoOnly: "/videos/video4.mp4",
-  },
-  {
-    image: "/images/image3.jpeg",
-    overlay: { type: "video", src: "/videos/video3.mp4", width: "w-80", height: "h-96" },
+    videoWidth: "w-80", // 60rem
+    videoHeight: "h-[27rem]", // 96rem
   },
   {
     image: "/images/image4.jpeg",
-    overlay: { type: "image", src: "/images/image4.jpeg", width: "w-60", height: "h-80" },
+    imageWidth: "w-[19rem]", // 20rem
+    imageHeight: "h-[13rem]", // 15rem
   },
   {
-    videoOnly: "/videos/video4.mp4",
+    videoOnly: "/videos/video5.mp4",
+    videoWidth: "w-[18rem]", // 60rem
+    videoHeight: "h-96", // 96rem
   },
 ];
 
+// Split mediaBlocks into groups of 10
+function splitIntoChunks(array, chunkSize) {
+  const result = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    result.push(array.slice(i, i + chunkSize));
+  }
+  return result;
+}
 
 export default function GallerySection() {
-  return (
-    <div className="relative  overflow-x-auto scrollbar-hidden whitespace-nowrap h-[650px]">
-      <div className="flex gap-40 px-20 py-10">
-        {mediaBlocks.map((block, index) => (
-          <div key={index} className="relative group">
-            {/* Case: Video only */}
-            {block.videoOnly ? (
-              <div className="w-60 h-96 relative">
-                <video
-                  src={block.videoOnly}
-                  className="object-cover w-full h-full rounded-lg animate-float"
-                  autoPlay 
-                  loop
-                  muted
-                />
-                <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 flex items-center justify-center text-white text-xl rounded-lg hover-popup">
-                  Video Preview
-                </div>
-              </div>
-            ) : (
-              <>
-                {/* Main Image */}
-                <div className="relative w-60 h-60 z-10">
-                  <img
-                    src={block.image}
-                    alt=""
-                    className="object-cover w-full h-full rounded-lg animate-float"
-                  />
-                  <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 text-white flex items-center justify-center text-lg rounded-lg hover-popup">
-                    Image Preview
-                  </div>
-                </div>
+  const blockChunks = splitIntoChunks(mediaBlocks, 10);
 
-                {/* Overlay */}
-                {block.overlay && (
+  return (
+    <div className="relative w-full h-screen bg-white overflow-x-auto overflow-y-hidden snap-x snap-mandatory">
+      
+      {/* Title */}
+      <h2 className="text-5xl font-normal text-center mb-5 p-4">
+        Gallery
+      </h2>
+
+      {/* Scrollable container */}
+      <div className="flex w-max h-[90%] gap-20 px-10">
+        {blockChunks.map((chunk, chunkIndex) => (
+          <div
+            key={chunkIndex}
+            className="relative w-screen h-full flex-shrink-0 snap-start"
+          >
+            {/* Each Group of 10 */}
+            {chunk.map((block, index) => (
+              <div
+                key={index}
+                className={`absolute ${getPositionStyles(index)} transition-all duration-500 transform hover:scale-105 hover:translate-y-2`}
+              >
+                {block.videoOnly ? (
                   <div
-                    className={`absolute top-full left-full -translate-y-1/2 -translate-x-1/2 ${block.overlay.width} ${block.overlay.height} z-20`}
+                    className={`${block.videoWidth} ${block.videoHeight} relative`}
                   >
-                    {block.overlay.type === "video" ? (
-                      <video
-                        src={block.overlay.src}
-                        className="object-cover w-full h-full rounded-lg animate-float"
-                        autoPlay
-                        loop
-                        muted
-                      />
-                    ) : (
+                    <video
+                      src={block.videoOnly}
+                      className="object-cover w-full h-full rounded-lg animate-float"
+                      controls
+                      autoPlay
+                      muted // Auto play and mute video initially
+                      loop // Ensure the video loops
+                      preload="metadata"
+                    />
+                  </div>
+                ) : (
+                  <>
+                    {/* Main Image */}
+                    <div
+                      className={`${block.imageWidth} ${block.imageHeight} relative`}
+                    >
                       <img
-                        src={block.overlay.src}
+                        src={block.image}
                         alt=""
                         className="object-cover w-full h-full rounded-lg animate-float"
                       />
-                    )}
-                    <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 text-white flex items-center justify-center text-lg rounded-lg hover-popup">
-                      {block.overlay.type === "video" ? "Video Preview" : "Image Preview"}
                     </div>
-                  </div>
+                  </>
                 )}
-              </>
-            )}
+              </div>
+            ))}
           </div>
         ))}
       </div>
     </div>
   );
+}
+
+/**
+ * Manual positioning for each block (first 10)
+ */
+function getPositionStyles(index) {
+  const positions = [
+    "top-0 left-20",          
+    "top-7 left-[40rem]",      
+    "top-0 left-[60rem]",     
+    "top-96 left-[5rem]",          
+    "top-[9rem] left-[75rem]",     
+    "top-[8rem] left-[21rem]",     
+    "top-[33rem] left-[40rem]",
+    "top-[22rem] left-[65rem]",     
+    "top-0 left-[90rem]",
+    "top-[20rem] left-[90rem]",
+  ];
+  return positions[index % positions.length] || "";
 }

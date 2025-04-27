@@ -7,6 +7,13 @@ import CarMove from "./projects/page";
 import Footer from "./components/footer";
 import GallerySection from "./components/gallary";
 
+import { Bokor } from "next/font/google";
+
+const bokorFont = Bokor({
+  subsets: ['latin'],
+  weight: "400",
+  variable: "--font-bokor",
+});
 
 export default function Sectionsliding() {
 
@@ -148,12 +155,12 @@ const animate = () => {
   return (
     <div className="relative w-full h-[700vh]"> {/* total height = sections × 100vh */}
       {/* Section 1 */}
-      <section className="sticky top-0 h-screen w-full flex items-center justify-center">
+      <section className={`sticky top-0 h-screen w-full flex items-center justify-center ${bokorFont.variable}`}>
           <div className="relative flex flex-col md:flex-row w-full h-full items-center justify-center overflow-hidden">
 
             {/* Two Videos Side-by-Side */}
             <div className="flex flex-col md:flex-row w-full h-full">
-              {/* Left Video */}
+              {/* Left Video */} 
               <div className="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden">
                 <video
                   src="/videos/heroleft.mp4"
@@ -183,20 +190,23 @@ const animate = () => {
 
             {/* Center Text Content backdrop-blur-sm bg-black/40 */}
             <div className="absolute z-20 text-white text-center backdrop-blur-sm bg-black/10  p-2 xs:p-3 xsm:p-4 sm:p-6 md:p-8 rounded-2xl mx-2 xs:mx-4">
-            <h1 className="font-nostalgic bg-gradient-to-r from-stone-50 via-yellow-100 to-yellow-200 bg-clip-text text-transparent text-lg xs:text-xl xsm:text-3xl sm:text-4xl md:text-9xl lg:text-9xl font-bold mb-2 xsm:mb-4">
+            <h1 className="font-nostalgic bg-gradient-to-r from-stone-50 via-yellow-100 to-yellow-200 bg-clip-text text-transparent text-lg xs:text-xl xsm:text-3xl sm:text-4xl md:text-9xl lg:text-9xl font-bold mb-2 xsm:mb-4 md:p-4">
               Blooming Forest
             </h1>
 
               <p className="font-belkinregular text-xs xs:text-sm xsm:text-base sm:text-lg md:text-3xl mb-4 xsm:mb-6">
                 Embrace a lifestyle where the harmony of nature and <br></br> the comforts of mordern living intertwine
               </p>
-              <button
-                onClick={togglePlayPause}
-                className="bg-white text-black font-semibold px-2 py-1 xs:px-3 xs:py-1.5 xsm:px-4 xsm:py-2 rounded-lg shadow-lg hover:bg-gray-200 transition"
-              >
-                {isPlaying ? 'Pause Video' : 'Play Video'}
-              </button>
             </div>
+
+            {/* One Common Border */}
+            {/* <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                <img 
+                  src="/images/videoborder.svg" 
+                  alt="Video Border" 
+                  className="w-full h-full object-cover"
+                />
+              </div> */}
     
             {/* Four Corner Frames */}
             {/* Top Left Frame */}
@@ -236,7 +246,7 @@ const animate = () => {
         <div className="h-[200vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
           
           {/* Section 2 */}
-          <div className="h-screen bg-red-300 flex items-center justify-center">
+          <div className="h-[200vh] bg-red-300 flex items-center justify-center">
             <GolfSection />
           </div>
 

@@ -46,3 +46,10 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family:'Belkin Light';
+  src: url('/fonts/BelkinLight.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
