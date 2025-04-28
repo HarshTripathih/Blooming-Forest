@@ -155,11 +155,11 @@ const animate = () => {
     const forest = "Forest";
 
     const bloomingLetters = blooming.split("").map((letter, index) => (
-      <span key={index} className="letter">{letter}</span>
+      <span key={index} className="letter p-2">{letter}</span>
     ));
 
     const forestLetters = forest.split("").map((letter, index) => (
-      <span key={index} className="letter">{letter}</span>
+      <span key={index} className="letter p-2">{letter}</span>
     ));
 
   
@@ -320,7 +320,8 @@ const animate = () => {
       {/* Section 5 */}
       <section ref={interiorRef} className="sticky top-0 h-screen bg-white">
       <img
-          src="https://img.freepik.com/free-photo/3d-rendering-modern-dining-room-living-room-with-luxury-decor_105762-1934.jpg"
+          // src="https://img.freepik.com/free-photo/3d-rendering-modern-dining-room-living-room-with-luxury-decor_105762-1934.jpg"
+          src="/images/hubsite.JPG"
           alt="Interior Design"
           className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-200 ease-out"
           style={{
@@ -355,10 +356,10 @@ const animate = () => {
             }}
           >
             {[
-              "https://img.freepik.com/free-photo/complex-aerial-view-city_23-2148975282.jpg",
-              "https://img.freepik.com/free-photo/hotel_1127-4035.jpg",
-              "https://img.freepik.com/premium-photo/city-photography-landscape_1417-8954.jpg",
-              "https://img.freepik.com/free-photo/modern-apartment-architecture_1268-14696.jpg",
+              "/images/fetured1.jpg",
+              "/images/fetured2.jpg",
+              "/images/fetured3.jpg",
+              "/images/fetured4.jpg",
             ].map((img, index) => (
               <img
                 key={index}
@@ -376,10 +377,14 @@ const animate = () => {
     <section ref={verticalRef} className="sticky top-0 h-screen">
       <div className="sticky top-0 h-screen flex items-center justify-center pointer-events-none">
           <div className="absolute left-0 w-1/2 p-8 space-y-6 z-0">
-            {[...Array(3)].map((_, index) => (
+            {[
+              "/images/vertical1.JPG",
+              "/images/vertical2.JPG",
+              "/images/vertical3.JPG",
+             ].map((img, index) => (
               <img
                 key={index}
-                src="https://img.freepik.com/free-photo/analog-landscape-city-with-buildings_23-2149661456.jpg"
+                src={img}
                 alt="Vertical Up"
                 className="rounded-lg shadow-lg w-full transition-transform duration-100 ease-out"
                 style={{
@@ -389,10 +394,13 @@ const animate = () => {
             ))}
           </div>
           <div className="absolute right-0 w-1/2 p-8 space-y-6 z-0">
-            {[...Array(3)].map((_, index) => (
+            {[
+              "/images/vertical4.JPG",
+              "/images/vertical5.jpg",
+            ].map((img, index) => (
               <img
                 key={index}
-                src="https://img.freepik.com/premium-photo/modern-building-bangkok-business-district-bangkok-city-with-skyline-evening-thailand_73503-480.jpg"
+                src={img}
                 alt="Vertical Down"
                 className="rounded-lg shadow-lg w-full transition-transform duration-100 ease-out"
                 style={{
