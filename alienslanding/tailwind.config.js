@@ -49,6 +49,9 @@ module.exports = {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         }
       },
+      scale: {
+        '200': '2',
+      },
       fontFamily: {
         nostalgic: ['"The Nostalgic"', 'sans-serif'],
         belkinregular: ['"Belkin Regular"', 'sans-serif'],

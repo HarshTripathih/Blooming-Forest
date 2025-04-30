@@ -167,91 +167,72 @@ const animate = () => {
   return (
     <div className="relative w-full h-[700vh]"> {/* total height = sections × 100vh */}
       {/* Section 1 */}
-      <section className={`sticky top-0 h-screen w-full flex items-center justify-center ${bokorFont.variable}`}>
-          <div className="relative flex flex-col md:flex-row w-full h-full items-center justify-center overflow-hidden">
+      <section className={`sticky top-0 h-screen w-full flex items-center justify-center bg-[#0d1c0f] ${bokorFont.variable}`}>
+        <div className="relative flex w-full h-full overflow-hidden">
 
-            {/* Two Videos Side-by-Side */}
-            <div className="flex flex-col md:flex-row w-full h-full">
-              {/* Left Video */} 
-              <div className="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden">
-                <video
-                  src="/videos/heroleft.mp4"
-                  className="absolute top-0 left-0 w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                ></video>
-              </div>
-
-              {/* Right Video */}
-              <div className="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden">
-                <video
-                  src="/videos/heroright.mp4"
-                  className="absolute top-0 left-0 w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                ></video>
-              </div>
-            </div>
-
-            {/* Black Transparent Overlay */}
-            {/* <div className="absolute inset-0 bg-black bg-opacity-5 z-10 pointer-events-none"></div> */}
-
-            {/* Center Text Content backdrop-blur-sm bg-black/40 */}
-            <div className="absolute z-20 text-white text-center backdrop-blur-sm bg-black/10  p-2 xs:p-3 xsm:p-4 sm:p-6 md:p-8 rounded-2xl mx-2 xs:mx-4">
-              <h1 className="font-nostalgic text-lg xs:text-xl xsm:text-3xl sm:text-4xl md:text-9xl lg:text-9xl mb-2 xsm:mb-4 md:p-4">
-                <span className="font-nostalgic p-[2px]">{bloomingLetters}</span>&nbsp;
-                <span className="font-waterfallregular text-[14rem]">{forestLetters}</span>
-              </h1>
-
-              <p className="font-belkinregular text-xs xs:text-sm xsm:text-base sm:text-lg md:text-3xl mb-4 xsm:mb-6">
-                Embrace a lifestyle where the harmony of nature and <br></br> the comforts of mordern living intertwine
-              </p>
-            </div>
-
-            {/* One Common Border */}
-            {/* <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-                <img 
-                  src="/images/videoborder.svg" 
-                  alt="Video Border" 
-                  className="w-full h-full object-cover"
-                />
-              </div> */}
-    
-            {/* Four Corner Frames */}
-            {/* Top Left Frame */}
-            <img 
-              src="/images/borderframe.svg" 
-              alt="Corner Frame" 
-              className="absolute top-4 left-4 w-16 h-16 md:top-8 md:left-8 md:w-24 md:h-24 object-contain pointer-events-none z-30"
+          {/* Left Video - 1/3 width */}
+          <div className="relative w-1/3 h-full overflow-hidden">
+            <video
+              src="/videos/heroleft.mp4"
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
             />
-
-            {/* Top Right Frame */}
-            <img 
-              src="/images/borderframe.svg" 
-              alt="Corner Frame" 
-              className="absolute top-4 right-4 w-16 h-16 md:top-8 md:right-8 md:w-24 md:h-24 object-contain pointer-events-none rotate-90 z-30"
+            {/* Left Border Overlay */}
+            <img
+              src="/images/videoborder.svg"
+              alt="Left Border"
+              className="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none"
             />
-
-            {/* Bottom Left Frame */}
-            <img 
-              src="/images/borderframe.svg" 
-              alt="Corner Frame" 
-              className="absolute bottom-4 left-4 w-16 h-16 md:bottom-8 md:left-8 md:w-24 md:h-24 object-contain pointer-events-none -rotate-90 z-30"
-            />
-
-            {/* Bottom Right Frame */}
-            <img 
-              src="/images/borderframe.svg" 
-              alt="Corner Frame" 
-              className="absolute bottom-4 right-4 w-16 h-16 md:bottom-8 md:right-8 md:w-24 md:h-24 object-contain pointer-events-none -rotate-180 z-30"
-            />
-
           </div>
+
+          {/* Right Video - 2/3 width with elliptical mask */}
+          <div className="relative w-2/3 h-full overflow-hidden bg-[#031c00]">
+          <div className="absolute top-0 left-0 w-full h-full mask-custom overflow-hidden">
+          <video
+            src="/videos/heroright.mp4"
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        </div>
+            {/* Right Border Overlay */}
+            <img
+              src="/images/videoborder.svg"
+              alt="Right Border"
+              className="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none"
+            />
+          </div>
+
+          {/* Full Dark Transparent Overlay */}
+          <div className="absolute inset-0 bg-black/40 z-20 pointer-events-none" />
+
+          {/* Center Text on top of everything */}
+          <div className="absolute inset-0 flex items-center justify-center text-white z-30">
+          <div className="absolute z-30 text-white text-center p-6 rounded-2xl">
+            <h1 className="font-nostalgic text-4xl md:text-9xl mb-4">
+              <span className="p-[2px]">{bloomingLetters}</span>&nbsp;
+              <span className="font-waterfallregular text-[14rem]">{forestLetters}</span>
+            </h1>
+            <p className="font-belkinregular text-lg md:text-3xl">
+              Embrace a lifestyle where the harmony of nature<br />
+              and the comforts of modern living intertwine
+            </p>
+          </div>
+          </div>
+
+          {/* Decorative Corner Frames */}
+          <img src="/images/borderframe.svg" className="absolute top-4 left-4 w-16 md:w-24 z-40" />
+          <img src="/images/borderframe.svg" className="absolute top-4 right-4 w-16 md:w-24 rotate-90 z-40" />
+          <img src="/images/borderframe.svg" className="absolute bottom-4 left-4 w-16 md:w-24 -rotate-90 z-40" />
+          <img src="/images/borderframe.svg" className="absolute bottom-4 right-4 w-16 md:w-24 -rotate-180 z-40" />
+        </div>
       </section>
+
 
 
 

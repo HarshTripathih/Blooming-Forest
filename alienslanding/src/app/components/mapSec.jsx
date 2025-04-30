@@ -40,7 +40,15 @@ export default function ExploreMapPage() {
       </div>
 
       <div className="absolute right-10 top-[10%] w-[40%]">
-        <Image src="/map.png" alt="Hyderabad Map" width={600} height={600} className="w-full h-auto" />
+        <Image 
+            src="/images/hyderabadouter.webp" 
+            alt="Hyderabad Map" 
+            width={600} 
+            height={600} 
+            className="w-full h-auto" 
+            // layout="fill"
+            // objectFit="cover"
+        />
         {mapDots.map(dot => (
           <div
             key={dot.id}

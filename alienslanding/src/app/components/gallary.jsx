@@ -62,7 +62,7 @@
 //       <div className="flex gap-6 px-6 min-w-max">
 //         {columns.map((column, colIdx) => (
 //           <div key={colIdx} className="flex flex-col gap-4 w-[320px] ">
-            
+
 //             {column.map((item, idx) => (
 //               <div
 //                 key={`${colIdx}-${idx}`}
@@ -342,62 +342,256 @@
 
 //gallary 3
 
+// import React from "react";
+
+// const mediaBlocks = [
+//   {
+//     image: "/images/image1.jpeg",
+//     imageWidth: "w-[20rem]", // 20rem
+//     imageHeight: "h-[15rem]", // 15rem
+//   },
+//   {
+//     videoOnly: "/videos/video1.mp4",
+//     videoWidth: "w-[25rem]", // 60rem     //stone bird
+//     videoHeight: "h-[30rem]", // 96rem
+//   },
+//   {
+//     image: "/images/image2.jpeg",
+//     imageWidth: "w-[25rem]", // 20rem
+//     imageHeight: "h-[13rem]", // 15rem
+//   },
+//   {
+//     videoOnly: "/videos/video2.mp4",
+//     videoWidth: "w-80", // 60rem
+//     videoHeight: "h-96", // 96rem
+//   },
+//   {
+//     image: "/images/image3.jpeg",       //small bird 2
+//     imageWidth: "w-[19rem]", // 20rem
+//     imageHeight: "h-[10rem]", // 15rem
+//   },
+//   {
+//     videoOnly: "/videos/video3.mp4",      //video eagle
+//     videoWidth: "w-[17rem]", // 60rem
+//     videoHeight: "h-96", // 96rem
+//   },
+//   {
+//     image: "/images/image4.jpeg",
+//     imageWidth: "w-[20rem]", // 20rem
+//     imageHeight: "h-[13rem]", // 15rem
+//   },
+//   {
+//     videoOnly: "/videos/video4.mp4",
+//     videoWidth: "w-80", // 60rem          //green sparrow
+//     videoHeight: "h-[20rem]", // 96rem
+//   },
+//   {
+//     image: "/images/image4.jpeg",
+//     imageWidth: "w-[19rem]", // 20rem
+//     imageHeight: "h-[13rem]", // 15rem
+//   },
+//   {
+//     videoOnly: "/videos/video5.mp4",
+//     videoWidth: "w-[18rem]", // 60rem
+//     videoHeight: "h-96", // 96rem
+//   },
+//   {
+//     image: "/images/image3.jpeg", //smallest image 1
+//     imageWidth: "w-[12.7rem]",
+//     imageHeight: "h-[6rem]",
+//   },
+//   {
+//     videoOnly: "/videos/video6.mp4", //couple video
+//     videoWidth: "w-[15rem]",
+//     videoHeight: "h-[22rem]",
+//   },
+//   {
+//     image: "/images/image3.jpeg", //smallest image 2
+//     imageWidth: "w-[12.7rem]",
+//     imageHeight: "h-[6rem]",
+//   },
+//   {
+//     image: "/images/image3.jpeg", //smallest image 3
+//     imageWidth: "w-[11rem]",
+//     imageHeight: "h-[6rem]",
+//   },
+// ];
+
+// // Split mediaBlocks into groups of 10
+// function splitIntoChunks(array, chunkSize) {
+//   const result = [];
+//   for (let i = 0; i < array.length; i += chunkSize) {
+//     result.push(array.slice(i, i + chunkSize));
+//   }
+//   return result;
+// }
+
+// export default function GallerySection() {
+//   const blockChunks = splitIntoChunks(mediaBlocks, 14);
+
+//   return (
+//     <div className="relative w-full h-screen bg-white overflow-x-auto overflow-y-hidden snap-x snap-mandatory">
+
+//       {/* Title */}
+//       <h2 className="text-5xl font-normal text-center mb-5 p-4">
+//         Gallery
+//       </h2>
+
+//       {/* Scrollable container */}
+//       <div className="flex w-max h-[90%] gap-20 px-10">
+//         {blockChunks.map((chunk, chunkIndex) => (
+//           <div
+//             key={chunkIndex}
+//             className="relative w-screen h-full flex-shrink-0 snap-start"
+//           >
+//             {/* Each Group of 10 */}
+//             {chunk.map((block, index) => (
+//               <div
+//                 key={index}
+//                 className={`absolute ${getPositionStyles(index)} transition-all duration-500 transform hover:scale-105 hover:translate-y-2`}
+//               >
+//                 {block.videoOnly ? (
+//                   <div
+//                     className={`${block.videoWidth} ${block.videoHeight} relative`}
+//                   >
+//                     <video
+//                       src={block.videoOnly}
+//                       className="object-cover w-full h-full rounded-lg animate-float"
+//                       autoPlay
+//                       muted // Auto play and mute video initially
+//                       loop // Ensure the video loops
+//                       preload="metadata"
+//                     />
+//                   </div>
+//                 ) : (
+//                   <>
+//                     {/* Main Image */}
+//                     <div
+//                       className={`${block.imageWidth} ${block.imageHeight} relative`}
+//                     >
+//                       <img
+//                         src={block.image}
+//                         alt=""
+//                         className="object-cover w-full h-full rounded-lg animate-float"
+//                       />
+//                     </div>
+//                   </>
+//                 )}
+//               </div>
+//             ))}
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// /**
+//  * Manual positioning for each block (first 12)
+//  */
+// function getPositionStyles(index) {
+//   const positions = [
+//     "top-0 left-20 z-10",                  
+//     "top-8 left-[42rem] z-10",           // stone bird      
+//     "top-0 left-[60rem] z-10",           
+//     "top-96 left-[5rem] z-10",           
+//     "top-[16rem] left-[71rem] z-20",     // small bird 2 (👈 should be in front)
+//     "top-[8rem] left-[22rem] z-10",      // eagle video 
+//     "top-[35rem] left-[29rem] z-10",     // last row parrot
+//     "top-[28rem] left-[53rem] z-10",     // green sparrow
+//     "top-0 left-[90rem] z-10",
+//     "top-[24rem] left-[77rem] z-0",      // black sparrow (👈 should be behind)
+//     "top-[0rem] left-[27rem] z-10",      // small bird 1
+//     "top-[16rem] left-[94rem] z-10",  //couple video
+//     "top-[16rem] left-[7rem] z-10", //small image 2
+//     "top-[41rem] left-[98rem] z-10", // small image 3
+//   ];
+//   return positions[index % positions.length] || "";
+// }
+
+
+
+
+
+
+
+// gallary 4 responsive for  mobile also
+
 import React from "react";
 
 const mediaBlocks = [
   {
-    image: "/images/image1.jpeg",
-    imageWidth: "w-[20rem]", // 20rem
-    imageHeight: "h-[15rem]", // 15rem
+    image: "/images/image1.jpeg",              
+    imageWidth: "w-[9rem] sm:w-[20rem]",
+    imageHeight: "h-[6rem] sm:h-[15rem]",
   },
   {
-    videoOnly: "/videos/video1.mp4",
-    videoWidth: "w-[15rem]", // 60rem
-    videoHeight: "h-96", // 96rem
+    videoOnly: "/videos/video1.mp4",              
+    videoWidth: "w-[10rem] sm:w-[25rem]",
+    videoHeight: "h-[10rem] sm:h-[30rem]",
   },
   {
-    image: "/images/image2.jpeg",
-    imageWidth: "w-[25rem]", // 20rem
-    imageHeight: "h-[13rem]", // 15rem
+    image: "/images/image2.jpeg",            
+    imageWidth: "w-[10rem] sm:w-[25rem]",
+    imageHeight: "h-[6rem] sm:h-[13rem]",
   },
   {
     videoOnly: "/videos/video2.mp4",
-    videoWidth: "w-80", // 60rem
-    videoHeight: "h-96", // 96rem
+    videoWidth: "w-[9rem] sm:w-80",
+    videoHeight: "h-[9rem] sm:h-96",
   },
   {
     image: "/images/image3.jpeg",
-    imageWidth: "w-[18rem]", // 20rem
-    imageHeight: "h-[15rem]", // 15rem
+    imageWidth: "w-[9rem] sm:w-[19rem]",
+    imageHeight: "h-[5rem] sm:h-[10rem]",
   },
   {
     videoOnly: "/videos/video3.mp4",
-    videoWidth: "w-60", // 60rem
-    videoHeight: "h-96", // 96rem
+    videoWidth: "w-[9rem] sm:w-[17rem]",
+    videoHeight: "h-[9rem] sm:h-96",
   },
   {
     image: "/images/image4.jpeg",
-    imageWidth: "w-[20rem]", // 20rem
-    imageHeight: "h-[15rem]", // 15rem
+    imageWidth: "w-[9rem] sm:w-[20rem]",
+    imageHeight: "h-[5rem] sm:h-[13rem]",
   },
   {
     videoOnly: "/videos/video4.mp4",
-    videoWidth: "w-80", // 60rem
-    videoHeight: "h-[27rem]", // 96rem
+    videoWidth: "w-[9rem] sm:w-80",
+    videoHeight: "h-[9rem] sm:h-[20rem]",
   },
   {
     image: "/images/image4.jpeg",
-    imageWidth: "w-[19rem]", // 20rem
-    imageHeight: "h-[13rem]", // 15rem
+    imageWidth: "w-[9rem] sm:w-[19rem]",
+    imageHeight: "h-[5rem] sm:h-[13rem]",
   },
   {
     videoOnly: "/videos/video5.mp4",
-    videoWidth: "w-[18rem]", // 60rem
-    videoHeight: "h-96", // 96rem
+    videoWidth: "w-[9rem] sm:w-[18rem]",
+    videoHeight: "h-[9rem] sm:h-96",
+  },
+  {
+    image: "/images/image3.jpeg",
+    imageWidth: "w-[6rem] sm:w-[12.7rem]",
+    imageHeight: "h-[3.5rem] sm:h-[6rem]",
+  },
+  {
+    videoOnly: "/videos/video6.mp4",
+    videoWidth: "w-[6rem] sm:w-[15rem]",
+    videoHeight: "h-[9rem] sm:h-[22rem]",
+  },
+  {
+    image: "/images/image3.jpeg",
+    imageWidth: "w-[6rem] sm:w-[12.7rem]",
+    imageHeight: "h-[3.5rem] sm:h-[6rem]",
+  },
+  {
+    image: "/images/image3.jpeg",
+    imageWidth: "w-[6rem] sm:w-[11rem]",
+    imageHeight: "h-[3.5rem] sm:h-[6rem]",
   },
 ];
 
-// Split mediaBlocks into groups of 10
 function splitIntoChunks(array, chunkSize) {
   const result = [];
   for (let i = 0; i < array.length; i += chunkSize) {
@@ -407,56 +601,44 @@ function splitIntoChunks(array, chunkSize) {
 }
 
 export default function GallerySection() {
-  const blockChunks = splitIntoChunks(mediaBlocks, 10);
+  const blockChunks = splitIntoChunks(mediaBlocks, 14);
 
   return (
-    <div className="relative w-full h-screen bg-white overflow-x-auto overflow-y-hidden snap-x snap-mandatory">
-      
-      {/* Title */}
-      <h2 className="text-5xl font-normal text-center mb-5 p-4">
+    <div className="relative w-full h-screen bg-white overflow-x-scroll overflow-y-hidden snap-x snap-mandatory">
+      <h2 className="text-3xl sm:text-5xl font-normal text-center mb-5 p-4">
         Gallery
       </h2>
 
-      {/* Scrollable container */}
-      <div className="flex w-max h-[90%] gap-20 px-10">
+      <div className="flex w-max min-w-[100vw] h-[90%] gap-10 px-4 sm:px-10">
         {blockChunks.map((chunk, chunkIndex) => (
           <div
             key={chunkIndex}
             className="relative w-screen h-full flex-shrink-0 snap-start"
           >
-            {/* Each Group of 10 */}
             {chunk.map((block, index) => (
               <div
                 key={index}
                 className={`absolute ${getPositionStyles(index)} transition-all duration-500 transform hover:scale-105 hover:translate-y-2`}
               >
                 {block.videoOnly ? (
-                  <div
-                    className={`${block.videoWidth} ${block.videoHeight} relative`}
-                  >
+                  <div className={`${block.videoWidth} ${block.videoHeight} relative`}>
                     <video
                       src={block.videoOnly}
                       className="object-cover w-full h-full rounded-lg animate-float"
-                      controls
                       autoPlay
-                      muted // Auto play and mute video initially
-                      loop // Ensure the video loops
+                      muted
+                      loop
                       preload="metadata"
                     />
                   </div>
                 ) : (
-                  <>
-                    {/* Main Image */}
-                    <div
-                      className={`${block.imageWidth} ${block.imageHeight} relative`}
-                    >
-                      <img
-                        src={block.image}
-                        alt=""
-                        className="object-cover w-full h-full rounded-lg animate-float"
-                      />
-                    </div>
-                  </>
+                  <div className={`${block.imageWidth} ${block.imageHeight} relative`}>
+                    <img
+                      src={block.image}
+                      alt=""
+                      className="object-cover w-full h-full rounded-lg animate-float"
+                    />
+                  </div>
                 )}
               </div>
             ))}
@@ -467,21 +649,22 @@ export default function GallerySection() {
   );
 }
 
-/**
- * Manual positioning for each block (first 10)
- */
 function getPositionStyles(index) {
   const positions = [
-    "top-0 left-20",          
-    "top-7 left-[40rem]",      
-    "top-0 left-[60rem]",     
-    "top-96 left-[5rem]",          
-    "top-[9rem] left-[75rem]",     
-    "top-[8rem] left-[21rem]",     
-    "top-[33rem] left-[40rem]",
-    "top-[22rem] left-[65rem]",     
-    "top-0 left-[90rem]",
-    "top-[20rem] left-[90rem]",
+    "top-[2rem] left-4 sm:top-0 sm:left-20 z-10",                        // stone bird      
+    "top-[4rem] left-[6rem] sm:top-8 sm:left-[42rem] z-10",
+    "top-[2rem] left-[9rem] sm:top-0 sm:left-[60rem] z-10",
+    "top-[14rem] left-[1rem] sm:top-96 sm:left-[5rem] z-10",
+    "top-[12rem] left-[10rem] sm:top-[16rem] sm:left-[71rem] z-20",     // small bird 2 (👈 should be in front)
+    "top-[8rem] left-[3rem] sm:top-[8rem] sm:left-[22rem] z-10",        // eagle video 
+    "top-[25rem] left-[1rem] sm:top-[35rem] sm:left-[29rem] z-10",      // last row parrot
+    "top-[28rem] left-[5rem] sm:top-[28rem] sm:left-[53rem] z-10",      // green sparrow
+    "top-[2rem] left-[12rem] sm:top-0 sm:left-[90rem] z-10",            
+    "top-[15rem] left-[10rem] sm:top-[24rem] sm:left-[77rem] z-0",      // black sparrow (👈 should be behind)
+    "top-[4rem] left-[3rem] sm:top-[0rem] sm:left-[27rem] z-10",        // small bird 1
+    "top-[14rem] left-[12rem] sm:top-[16rem] sm:left-[94rem] z-10",     //couple video
+    "top-[14rem] left-[2rem] sm:top-[16rem] sm:left-[7rem] z-10",       //small image 2
+    "top-[35rem] left-[15.5rem] sm:top-[41rem] sm:left-[98rem] z-10",   // small image 3
   ];
   return positions[index % positions.length] || "";
 }
