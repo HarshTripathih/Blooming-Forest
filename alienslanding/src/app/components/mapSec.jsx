@@ -43,8 +43,8 @@ export default function ExploreMapPage() {
         <Image 
             src="/images/hyderabadouter.webp" 
             alt="Hyderabad Map" 
-            width={600} 
-            height={600} 
+            width={600}
+            height={600}
             className="w-full h-auto" 
             // layout="fill"
             // objectFit="cover"

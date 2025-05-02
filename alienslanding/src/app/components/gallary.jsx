@@ -605,7 +605,7 @@ export default function GallerySection() {
 
   return (
     <div className="relative w-full h-screen bg-white overflow-x-scroll overflow-y-hidden snap-x snap-mandatory">
-      <h2 className="text-3xl sm:text-5xl font-normal text-center mb-5 p-4">
+      <h2 className="text-3xl sm:text-7xl text-center mb-5 p-4 font-nostalgic text-[#a2790d]">
         Gallery
       </h2>
 

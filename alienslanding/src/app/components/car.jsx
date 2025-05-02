@@ -32,7 +32,7 @@ export default function CarMove() {
       <div style={{ height: `${maxScroll}px` }} ref={scrollRef}></div>
 
       {/* Fixed visual scene */}
-      <div className="fixed top-0 left-0 w-screen h-screen bg-black text-white overflow-hidden">
+      <div className="fixed top-0 left-0 w-screen h-screen text-white overflow-hidden">
         {/* Road Line */}
         <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-700" />
 

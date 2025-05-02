@@ -425,7 +425,7 @@ export default function CarMove() {
   return (
     <div ref={containerRef} className="relative h-[400vh]">
       {/* 1. Sticky Scene */}
-      <div className="sticky top-0 h-screen w-full bg-black text-white overflow-hidden">
+      <div className="sticky top-0 h-screen w-full bg-[#031c00] text-white overflow-hidden">
         {/* Road Line */}
         <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-700" />
 

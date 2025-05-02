@@ -218,7 +218,7 @@ const animate = () => {
               <span className="p-[2px]">{bloomingLetters}</span>&nbsp;
               <span className="font-waterfallregular text-[14rem]">{forestLetters}</span>
             </h1>
-            <p className="font-belkinregular text-lg md:text-3xl">
+            <p className="font-belkinregular text-lg md:text-3xl bg-[linear-gradient(to_right,#A2A2A2,#C2C2C2,#F9F9F9)] bg-clip-text text-transparent">
               Embrace a lifestyle where the harmony of nature<br />
               and the comforts of modern living intertwine
             </p>
@@ -328,8 +328,8 @@ const animate = () => {
         </div>
 
         {/* Section 8 scrolls over */}
-        <div ref={sliderRef} className="absolute top-0 w-full h-screen z-20 bg-black text-white flex flex-col items-center justify-center" style={{ transform: 'translateY(100vh)' }}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
+        <div ref={sliderRef} className="absolute top-0 w-full h-screen z-20 bg-[#031c00] text-white flex flex-col items-center justify-center" style={{ transform: 'translateY(100vh)' }}>
+          <h2 className="font-nostalgic text-[#a2790d] text-7xl md:text-7xl font-bold mb-6">Featured Projects</h2>
           <div
             className="flex space-x-8 overflow-x-hidden px-8 transition-transform duration-200 ease-out"
             style={{
@@ -401,7 +401,7 @@ const animate = () => {
       {/* Section 11 */}
       <section className="sticky top-0 bg-[#0a0f05] py-16 overflow-hidden relative">
           <div className="max-w-4xl mx-auto text-center mb-10 px-4">
-            <h2 className="text-4xl font-extrabold text-white mb-4">Our Trusted Brands</h2>
+            <h2 className="text-7xl font-extrabold text-white mb-4 font-nostalgic text-[#a2790d]">Our Trusted Brands</h2>
             <p className="text-lg text-gray-300">
               Partnering with top-tier brands to deliver trusted solutions across industries. Explore the power of collaboration.
             </p>

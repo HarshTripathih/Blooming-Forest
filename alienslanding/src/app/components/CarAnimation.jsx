@@ -637,10 +637,243 @@
 
 
 
+
+
+
+
+
+// "use client";
+
+// import { Canvas, useFrame, useThree } from "@react-three/fiber";
+// import { OrbitControls, useGLTF, useTexture, Text } from "@react-three/drei";
+// import * as THREE from "three";
+// import { useRef, useState, useEffect } from "react";
+
+// // 🧱 Grid & Axes
+// function GridOverlay() {
+//   const { scene } = useThree();
+//   useEffect(() => {
+//     const grid = new THREE.GridHelper(100, 100);
+//     scene.add(grid);
+//     return () => scene.remove(grid);
+//   }, [scene]);
+//   return null;
+// }
+
+// function AxesOverlay() {
+//   const { scene } = useThree();
+//   useEffect(() => {
+//     const axes = new THREE.AxesHelper(10);
+//     scene.add(axes);
+//     return () => scene.remove(axes);
+//   }, [scene]);
+//   return null;
+// }
+
+// // 🔴 3D Circular Block Marker
+// function Marker({ position, color = "red" }) {
+//   return (
+//     <mesh position={position}>
+//       <cylinderGeometry args={[0.5, 0.5, 0.2, 32]} />
+//       <meshStandardMaterial color={color} />
+//     </mesh>
+//   );
+// }
+
+// // 🔤 3D Block Text
+// function TextBlock({ text, position, visible }) {
+//   if (!visible || !text) return null;
+//   return (
+//     <Text
+//       position={[position.x, position.y + 1, position.z]}
+//       fontSize={0.8}
+//       color="white"
+//       anchorX="center"
+//       anchorY="middle"
+//       outlineColor="black"
+//       outlineWidth={0.05}
+//       // font="/fonts/Roboto-Bold.ttf"
+//     >
+//       {text}
+//     </Text>
+//   );
+// }
+
+// // 🗺️ Map Plane
+// function MapPlane({ onClick }) {
+//   const texture = useTexture("/images/hyderabadmap.svg");
+//   return (
+//     <mesh
+//       position={[25, -0.01, 10]}
+//       rotation={[-Math.PI / 2, 0, 0]}
+//       receiveShadow
+//       onClick={(e) => {
+//         e.stopPropagation();
+//         onClick?.(e.point);
+//       }}
+//     >
+//       <planeGeometry args={[80, 50]} />
+//       <meshBasicMaterial map={texture} />
+//     </mesh>
+//   );
+// }
+
+// // ✈️ Plane Animation
+// function Plane({ onLanded, planeRef }) {
+//   const { scene } = useGLTF("/images/aeroplane.glb");
+//   const [t, setT] = useState(0);
+
+//   useFrame((_, delta) => {
+//     if (!planeRef.current) return;
+//     const newT = Math.min(t + delta * 0.2, 1);
+//     const start = new THREE.Vector3(-30, 20, 0);
+//     const end = new THREE.Vector3(21.87071, -0.01, 14.7606);
+//     const pos = new THREE.Vector3().lerpVectors(start, end, newT);
+//     planeRef.current.position.copy(pos);
+//     planeRef.current.rotation.x = -Math.PI / 10;
+//     setT(newT);
+//     if (newT >= 1) onLanded();
+//   });
+
+//   return <primitive ref={planeRef} object={scene} scale={0.005} />;
+// }
+
+// // 🚗 Car Animation
+// function Car({ pathPoints, cameraRef, move, carRef, onReachPoint }) {
+//   const { scene } = useGLTF("/images/car_model.glb");
+//   const [progress, setProgress] = useState(0);
+
+//   useFrame((_, delta) => {
+//     if (!move || !carRef.current) return;
+
+//     const t = (progress + delta * 0.02) % 1;
+//     const index = Math.floor(t * (pathPoints.length - 1));
+//     const next = index + 1;
+//     const curr = pathPoints[index];
+//     const nextPoint = pathPoints[next];
+
+//     const pos = new THREE.Vector3().lerpVectors(
+//       curr,
+//       nextPoint,
+//       (t * (pathPoints.length - 1)) % 1
+//     );
+
+//     carRef.current.position.copy(pos);
+
+//     const dir = new THREE.Vector3().subVectors(nextPoint, curr).normalize();
+//     carRef.current.rotation.y = Math.atan2(dir.x, dir.z);
+
+//     setProgress(t);
+//     onReachPoint(index);
+//   });
+
+//   return <primitive ref={carRef} object={scene} scale={0.1} />;
+// }
+
+// // 🎥 Camera Follow
+// function FollowCameraController({ cameraRef, planeRef, carRef, planeLanded }) {
+//   useFrame(() => {
+//     if (!cameraRef.current) return;
+//     const targetObj = planeLanded ? carRef.current : planeRef.current;
+//     if (!targetObj) return;
+
+//     const pos = targetObj.position;
+//     const desiredPos = new THREE.Vector3(pos.x, pos.y + 5, pos.z + 10);
+//     cameraRef.current.position.lerp(desiredPos, 0.1);
+//     cameraRef.current.lookAt(pos);
+//   });
+
+//   return null;
+// }
+
+// // 🧠 Main Scene
+// export default function CarAnimation() {
+//   const cameraRef = useRef();
+//   const planeRef = useRef();
+//   const carRef = useRef();
+//   const [planeLanded, setPlaneLanded] = useState(false);
+//   const [clickedPoints, setClickedPoints] = useState([]);
+//   const [currentIndex, setCurrentIndex] = useState(0);
+
+//   const path = [
+//     { pos: new THREE.Vector3(21.87071, -0.01, 14.7606), label: "Airport" },
+//     { pos: new THREE.Vector3(25.4044, -0.01, 14.8013), label: "THE AGA KHAN ACADEMY" },
+//     { pos: new THREE.Vector3(25.2730, -0.01, 13.8962), label: "DRDO" },
+//     { pos: new THREE.Vector3(20.7418, -0.01, 7.1446), label: "CELKON" },
+//     { pos: new THREE.Vector3(22.4834, -0.01, 7.8640), label: "SAFRAN" },
+//     { pos: new THREE.Vector3(25.9914, -0.01, 9.6819), label: "MICROMAX" },
+//     { pos: new THREE.Vector3(28.1439, -0.01, 14.6916), label: "BOEING" },
+//     { pos: new THREE.Vector3(28.7780, -0.01, 15.3756), label: "COGNIZANT" },
+//     { pos: new THREE.Vector3(28.0039, -0.01, 15.6636), label: "TCS" },
+//     { pos: new THREE.Vector3(27.2097, -0.01, 15.6424), label: "LOCKHEED MARTIN" },
+//     { pos: new THREE.Vector3(27.2349, -0.01, 17.0121), label: "FOXCONN" },
+//     { pos: new THREE.Vector3(25.4516, -0.01, 17.0740), label: "RADIANT ELECTRONICS" },
+//     { pos: new THREE.Vector3(24.8960, -0.01, 19.5717), label: "" },
+//     { pos: new THREE.Vector3(24.8147, -0.01, 21.8331), label: "" },
+//     { pos: new THREE.Vector3(29.0707, -0.01, 23.9019), label: "FORTUNE FUTURE CITY" },
+//     { pos: new THREE.Vector3(25.8645, -0.01, 23.6768), label: "" },
+//     { pos: new THREE.Vector3(26.7483, -0.01, 26.4457), label: "ALIENS HUB" },
+//     { pos: new THREE.Vector3(25.7011, -0.01, 28.4867), label: "Destination" },
+//   ];
+
+//   const handleMapClick = (point) => {
+//     setClickedPoints((prev) => [...prev, point.clone()]);
+//   };
+
+//   return (
+//     <Canvas camera={{ position: [0, 10, 30], fov: 50 }} onCreated={({ camera }) => (cameraRef.current = camera)}>
+//       <ambientLight />
+//       <pointLight position={[10, 10, 10]} />
+
+//       <GridOverlay />
+//       <AxesOverlay />
+//       <MapPlane onClick={handleMapClick} />
+//       {clickedPoints.map((p, i) => (
+//         <Marker key={i} position={p} color="green" />
+//       ))}
+
+//       {/* Static 3D markers for each point */}
+//       {/* {path.map((p, i) => (
+//         <Marker key={`m-${i}`} position={p.pos} color="white" />
+//       ))} */}
+
+//       {/* Plane and car */}
+//       <Plane onLanded={() => setPlaneLanded(true)} planeRef={planeRef} />
+//       <Car
+//         pathPoints={path.map((p) => p.pos)}
+//         cameraRef={cameraRef}
+//         move={planeLanded}
+//         carRef={carRef}
+//         onReachPoint={setCurrentIndex}
+//       />
+
+//       {/* 3D Text Labels */}
+//       {path.map((p, i) => (
+//         <TextBlock key={i} text={p.label} position={p.pos} visible={i === currentIndex} />
+//       ))}
+
+//       <FollowCameraController
+//         cameraRef={cameraRef}
+//         planeRef={planeRef}
+//         carRef={carRef}
+//         planeLanded={planeLanded}
+//       />
+
+//       <OrbitControls />
+//     </Canvas>
+//   );
+// }
+
+
+
+
+
+
+
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, useGLTF, useTexture, Html } from "@react-three/drei";
+import { OrbitControls, useGLTF, useTexture, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { useRef, useState, useEffect } from "react";
 
@@ -665,17 +898,35 @@ function AxesOverlay() {
   return null;
 }
 
-// 🔴 Visual marker
+// 🔴 Marker
 function Marker({ position, color = "red" }) {
   return (
     <mesh position={position}>
-      <sphereGeometry args={[0.3, 16, 16]} />
+      <cylinderGeometry args={[0.5, 0.5, 0.2, 32]} />
       <meshStandardMaterial color={color} />
     </mesh>
   );
 }
 
-// 🗺️ Clickable map plane
+// 🔤 Text
+function TextBlock({ text, position, visible }) {
+  if (!visible || !text) return null;
+  return (
+    <Text
+      position={[position.x, position.y + 1, position.z]}
+      fontSize={0.8}
+      color="white"
+      anchorX="center"
+      anchorY="middle"
+      outlineColor="black"
+      outlineWidth={0.05}
+    >
+      {text}
+    </Text>
+  );
+}
+
+// 🗺️ Map
 function MapPlane({ onClick }) {
   const texture = useTexture("/images/hyderabadmap.svg");
   return (
@@ -694,7 +945,7 @@ function MapPlane({ onClick }) {
   );
 }
 
-// ✈️ Plane lands
+// ✈️ Plane
 function Plane({ onLanded, planeRef }) {
   const { scene } = useGLTF("/images/aeroplane.glb");
   const [t, setT] = useState(0);
@@ -714,19 +965,7 @@ function Plane({ onLanded, planeRef }) {
   return <primitive ref={planeRef} object={scene} scale={0.005} />;
 }
 
-// 🏷️ 3D Text Popup
-function NamePopup({ text, position, visible }) {
-  if (!visible) return null;
-  return (
-    <Html position={[position.x, position.y + 2, position.z]} center>
-      <div className="popup-label animate-popup bg-white px-2 py-1 rounded shadow text-xs font-semibold">
-        {text}
-      </div>
-    </Html>
-  );
-}
-
-// 🚗 Car animation
+// 🚗 Car
 function Car({ pathPoints, cameraRef, move, carRef, onReachPoint }) {
   const { scene } = useGLTF("/images/car_model.glb");
   const [progress, setProgress] = useState(0);
@@ -747,7 +986,6 @@ function Car({ pathPoints, cameraRef, move, carRef, onReachPoint }) {
     );
 
     carRef.current.position.copy(pos);
-
     const dir = new THREE.Vector3().subVectors(nextPoint, curr).normalize();
     carRef.current.rotation.y = Math.atan2(dir.x, dir.z);
 
@@ -758,7 +996,13 @@ function Car({ pathPoints, cameraRef, move, carRef, onReachPoint }) {
   return <primitive ref={carRef} object={scene} scale={0.1} />;
 }
 
-// 🎥 Camera follow
+// 🏠 Building
+function Building({ modelPath, position, rotation }) {
+  const { scene } = useGLTF(modelPath);
+  return <primitive object={scene} position={position} rotation={rotation} scale={0.1} />;
+}
+
+// 🎥 Follow Camera
 function FollowCameraController({ cameraRef, planeRef, carRef, planeLanded }) {
   useFrame(() => {
     if (!cameraRef.current) return;
@@ -774,7 +1018,50 @@ function FollowCameraController({ cameraRef, planeRef, carRef, planeLanded }) {
   return null;
 }
 
-// 🧠 Main Scene
+// 📌 Path & Buildings
+const path = [
+  { pos: new THREE.Vector3(21.87071, -0.01, 14.7606), label: "Airport" },
+  { pos: new THREE.Vector3(25.4044, -0.01, 14.8013), label: "THE AGA KHAN ACADEMY" },
+  { pos: new THREE.Vector3(25.273, -0.01, 13.8962), label: "DRDO" },
+  { pos: new THREE.Vector3(20.7418, -0.01, 7.1446), label: "CELKON" },
+  { pos: new THREE.Vector3(22.4834, -0.01, 7.864), label: "SAFRAN" },
+  { pos: new THREE.Vector3(25.9914, -0.01, 9.6819), label: "MICROMAX" },
+  { pos: new THREE.Vector3(28.1439, -0.01, 14.6916), label: "BOEING" },
+  { pos: new THREE.Vector3(28.778, -0.01, 15.3756), label: "COGNIZANT" },
+  { pos: new THREE.Vector3(28.0039, -0.01, 15.6636), label: "TCS" },
+  { pos: new THREE.Vector3(27.2097, -0.01, 15.6424), label: "LOCKHEED MARTIN" },
+  { pos: new THREE.Vector3(27.2349, -0.01, 17.0121), label: "FOXCONN" },
+  { pos: new THREE.Vector3(25.4516, -0.01, 17.074), label: "RADIANT ELECTRONICS" },
+  { pos: new THREE.Vector3(24.896, -0.01, 19.5717), label: "" },
+  { pos: new THREE.Vector3(24.8147, -0.01, 21.8331), label: "" },
+  { pos: new THREE.Vector3(29.0707, -0.01, 23.9019), label: "FORTUNE FUTURE CITY" },
+  { pos: new THREE.Vector3(25.8645, -0.01, 23.6768), label: "" },
+  { pos: new THREE.Vector3(26.7483, -0.01, 26.4457), label: "ALIENS HUB" },
+  { pos: new THREE.Vector3(25.7011, -0.01, 28.4867), label: "Destination" },
+];
+
+const buildingModels = [
+  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
+  { modelPath: "/images/building.glb", rotation: [0, Math.PI / 2, 0], positionOffset: [1, 0, -1] },
+  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [-1, 0, 0.5] },
+  { modelPath: "/images/building.glb", rotation: [0, 0.3, 0], positionOffset: [0.3, 0, 1] },
+  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
+  { modelPath: "/images/building.glb", rotation: [0, Math.PI, 0], positionOffset: [0.5, 0, -0.5] },
+  { modelPath: "/images/building.glb", rotation: [0, 0.6, 0], positionOffset: [1, 0, 1] },
+  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
+  { modelPath: "/images/building.glb", rotation: [0, -0.5, 0], positionOffset: [-0.5, 0, 0] },
+  { modelPath: "/images/building.glb", rotation: [0, 1.2, 0], positionOffset: [0.8, 0, -1] },
+  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
+  { modelPath: "/images/building.glb", rotation: [0, Math.PI / 3, 0], positionOffset: [1, 0, 1] },
+  { modelPath: "/images/building.glb", rotation: [0, -1, 0], positionOffset: [-1, 0, 0] },
+  { modelPath: "/images/building.glb", rotation: [0, 0.8, 0], positionOffset: [0.5, 0, -0.5] },
+  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [1, 0, 1] },
+  { modelPath: "/images/building.glb", rotation: [0, 0.5, 0], positionOffset: [-1, 0, 1] },
+  { modelPath: "/images/building.glb", rotation: [0, 0.2, 0], positionOffset: [0.2, 0, 0.2] },
+  { modelPath: "/images/building.glb", rotation: [0, Math.PI, 0], positionOffset: [0, 0, 0] },
+];
+
+// 🚀 Main Scene
 export default function CarAnimation() {
   const cameraRef = useRef();
   const planeRef = useRef();
@@ -782,27 +1069,6 @@ export default function CarAnimation() {
   const [planeLanded, setPlaneLanded] = useState(false);
   const [clickedPoints, setClickedPoints] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const path = [
-    { pos: new THREE.Vector3(21.87071, -0.01, 14.7606), label: "Airport" },
-    { pos: new THREE.Vector3(25.4044, -0.01, 14.8013), label: "Point A" },
-    { pos: new THREE.Vector3(25.2730, -0.01, 13.8962), label: "Point B" },
-    { pos: new THREE.Vector3(20.7418, -0.01, 7.1446), label: "Point C" },
-    { pos: new THREE.Vector3(22.4834, -0.01, 7.8640), label: "Point D" },
-    { pos: new THREE.Vector3(25.9914, -0.01, 9.6819), label: "Point E" },
-    { pos: new THREE.Vector3(28.1439, -0.01, 14.6916), label: "Point F" },
-    { pos: new THREE.Vector3(28.7780, -0.01, 15.3756), label: "Point G" },
-    { pos: new THREE.Vector3(28.0039, -0.01, 15.6636), label: "Point H" },
-    { pos: new THREE.Vector3(27.2097, -0.01, 15.6424), label: "Point I" },
-    { pos: new THREE.Vector3(27.2349, -0.01, 17.0121), label: "Point J" },
-    { pos: new THREE.Vector3(25.4516, -0.01, 17.0740), label: "Point K" },
-    { pos: new THREE.Vector3(24.8960, -0.01, 19.5717), label: "Point L" },
-    { pos: new THREE.Vector3(24.8147, -0.01, 21.8331), label: "Point M" },
-    { pos: new THREE.Vector3(29.0707, -0.01, 23.9019), label: "Point N" },
-    { pos: new THREE.Vector3(25.8645, -0.01, 23.6768), label: "Point O" },
-    { pos: new THREE.Vector3(26.7483, -0.01, 26.4457), label: "Point P" },
-    { pos: new THREE.Vector3(25.7011, -0.01, 28.4867), label: "Destination" },
-  ];
 
   const handleMapClick = (point) => {
     setClickedPoints((prev) => [...prev, point.clone()]);
@@ -816,6 +1082,7 @@ export default function CarAnimation() {
       <GridOverlay />
       <AxesOverlay />
       <MapPlane onClick={handleMapClick} />
+
       {clickedPoints.map((p, i) => (
         <Marker key={i} position={p} color="green" />
       ))}
@@ -830,8 +1097,26 @@ export default function CarAnimation() {
       />
 
       {path.map((p, i) => (
-        <NamePopup key={i} text={p.label} position={p.pos} visible={i === currentIndex} />
+        <TextBlock key={i} text={p.label} position={p.pos} visible={i === currentIndex} />
       ))}
+
+      {path.map((p, i) => {
+        const config = buildingModels[i] || {};
+        const offset = config.positionOffset || [0, 0, 0];
+        const finalPos = [
+          p.pos.x + offset[0],
+          p.pos.y + offset[1],
+          p.pos.z + offset[2],
+        ];
+        return (
+          <Building
+            key={`b-${i}`}
+            position={finalPos}
+            modelPath={config.modelPath}
+            rotation={config.rotation}
+          />
+        );
+      })}
 
       <FollowCameraController
         cameraRef={cameraRef}
