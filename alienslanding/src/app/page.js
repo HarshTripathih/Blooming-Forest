@@ -8,6 +8,7 @@ import Footer from "./components/footer";
 import GallerySection from "./components/gallary";
 
 import { Bokor } from "next/font/google";
+import UnrivalledViews from "./components/unrevailed";
 
 const bokorFont = Bokor({
   subsets: ['latin'],
@@ -236,8 +237,8 @@ const animate = () => {
 
 
 
-      {/* Section 2 and 3 together in normal flow */}
-        <div className="h-[200vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
+      {/* Section 2 and 3 and 4 together in normal flow */}
+        <div className="h-[400vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
           
           {/* Section 2 */}
           <div className="h-[200vh] bg-red-300 flex items-center justify-center">
@@ -245,6 +246,11 @@ const animate = () => {
           </div>
 
           {/* Section 3 */}
+          <div className="h-[100vh] bg-white flex items-center justify-center">
+            <UnrivalledViews/>
+          </div>
+
+          {/* Section 4 */}
           <div ref={secondSecRef} className="h-screen flex items-center justify-center relative overflow-hidden backdrop-blur-sm bg-black/50">
             <div className="flex items-center justify-between w-full h-full relative">
 
@@ -257,14 +263,13 @@ const animate = () => {
                   transition: 'opacity 0.4s ease, transform 0.4s ease',
                 }}
               >
-                <h2 className="text-xs xxs:text-sm sm:text-4xl md:text-5xl font-bold text-lime-700 mb-1 xxs:mb-2 sm:mb-4">
+                <h2 className="text-xs xxs:text-sm sm:text-4xl md:text-5xl font-bold text-white mb-1 xxs:mb-2 sm:mb-4">
                   Prime Location
                 </h2>
-                <p className="text-xs xxs:text-base sm:text-lg md:text-xl text-black">
+                <p className="text-xs xxs:text-base sm:text-lg md:text-xl text-white">
                   Nestled in the heart of the city, offering unparalleled convenience and charm.
                 </p>
               </div>
-
               {/* Image Container Sliding Right */}
               <div className="h-full overflow-hidden w-full max-w-full relative">
                 <img
@@ -292,13 +297,13 @@ const animate = () => {
 
         </div>
 
-
-      {/* Section 4 */}
+      
+      {/* Section 5 */}
       <section className="sticky top-0 h-screen">
         <ExploreMapPage />
       </section>
 
-      {/* Section 5 */}
+      {/* Section 6 */}
       <section ref={interiorRef} className="sticky top-0 h-screen bg-white">
       <img
           // src="https://img.freepik.com/free-photo/3d-rendering-modern-dining-room-living-room-with-luxury-decor_105762-1934.jpg"
@@ -315,19 +320,19 @@ const animate = () => {
         </div>
       </section>
 
-      {/* Section 6 */}
+      {/* Section 7 */}
       <section className=" h-[400vh] ">
           <CarMove />
       </section>
 
-      {/* Section 7 (holds both Section 7 content and Section 8) */}
+      {/* Section 8 (holds both Section 8 content and Section 9) */}
       <section className="relative h-[200vh] bg-white"> 
-        {/* Section 7 content pinned */}
+        {/* Section 8 content pinned */}
         <div className="sticky top-0 h-screen flex items-center justify-center text-center px-4 z-10">
           <h2 className="text-4xl md:text-6xl font-extrabold">Your Dream Home Awaits</h2>
         </div>
 
-        {/* Section 8 scrolls over */}
+        {/* Section 9 scrolls over */}
         <div ref={sliderRef} className="absolute top-0 w-full h-screen z-20 bg-[#031c00] text-white flex flex-col items-center justify-center" style={{ transform: 'translateY(100vh)' }}>
           <h2 className="font-nostalgic text-[#a2790d] text-7xl md:text-7xl font-bold mb-6">Featured Projects</h2>
           <div
@@ -353,7 +358,7 @@ const animate = () => {
         </div>
       </section>
 
-      {/* Section 9 (holds both Section 9 content and Section 10) */}
+      {/* Section 10 (holds both Section 10 content and Section 11) */}
 
     <section ref={verticalRef} className="sticky top-0 h-screen">
       <div className="sticky top-0 h-screen flex items-center justify-center pointer-events-none">

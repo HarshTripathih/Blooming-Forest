@@ -937,6 +937,7 @@ function MapPlane({ onClick }) {
       onClick={(e) => {
         e.stopPropagation();
         onClick?.(e.point);
+        console.log("🟢 Clicked point:", e.point);
       }}
     >
       <planeGeometry args={[80, 50]} />
@@ -947,7 +948,7 @@ function MapPlane({ onClick }) {
 
 // ✈️ Plane
 function Plane({ onLanded, planeRef }) {
-  const { scene } = useGLTF("/images/aeroplane.glb");
+  const { scene } = useGLTF("/models/aeroplane.glb");
   const [t, setT] = useState(0);
 
   useFrame((_, delta) => {
@@ -967,7 +968,7 @@ function Plane({ onLanded, planeRef }) {
 
 // 🚗 Car
 function Car({ pathPoints, cameraRef, move, carRef, onReachPoint }) {
-  const { scene } = useGLTF("/images/car_model.glb");
+  const { scene } = useGLTF("/models/car_model.glb");
   const [progress, setProgress] = useState(0);
 
   useFrame((_, delta) => {
@@ -996,11 +997,21 @@ function Car({ pathPoints, cameraRef, move, carRef, onReachPoint }) {
   return <primitive ref={carRef} object={scene} scale={0.1} />;
 }
 
-// 🏠 Building
-function Building({ modelPath, position, rotation }) {
+function Building({ pos, modelPath, positionOffset, rotation }) {
   const { scene } = useGLTF(modelPath);
-  return <primitive object={scene} position={position} rotation={rotation} scale={0.1} />;
+  console.log("Rendering building at", pos);
+
+  const finalOffset = Array.isArray(positionOffset) && positionOffset.length === 3 
+    ? positionOffset 
+    : [0, 0, 0];
+
+  const finalPosition = new THREE.Vector3().addVectors(pos, new THREE.Vector3(...finalOffset));
+
+  return (
+    <primitive object={scene.clone()} position={finalPosition} rotation={rotation} scale={0.1} />
+  );
 }
+
 
 // 🎥 Follow Camera
 function FollowCameraController({ cameraRef, planeRef, carRef, planeLanded }) {
@@ -1023,9 +1034,6 @@ const path = [
   { pos: new THREE.Vector3(21.87071, -0.01, 14.7606), label: "Airport" },
   { pos: new THREE.Vector3(25.4044, -0.01, 14.8013), label: "THE AGA KHAN ACADEMY" },
   { pos: new THREE.Vector3(25.273, -0.01, 13.8962), label: "DRDO" },
-  { pos: new THREE.Vector3(20.7418, -0.01, 7.1446), label: "CELKON" },
-  { pos: new THREE.Vector3(22.4834, -0.01, 7.864), label: "SAFRAN" },
-  { pos: new THREE.Vector3(25.9914, -0.01, 9.6819), label: "MICROMAX" },
   { pos: new THREE.Vector3(28.1439, -0.01, 14.6916), label: "BOEING" },
   { pos: new THREE.Vector3(28.778, -0.01, 15.3756), label: "COGNIZANT" },
   { pos: new THREE.Vector3(28.0039, -0.01, 15.6636), label: "TCS" },
@@ -1033,32 +1041,27 @@ const path = [
   { pos: new THREE.Vector3(27.2349, -0.01, 17.0121), label: "FOXCONN" },
   { pos: new THREE.Vector3(25.4516, -0.01, 17.074), label: "RADIANT ELECTRONICS" },
   { pos: new THREE.Vector3(24.896, -0.01, 19.5717), label: "" },
-  { pos: new THREE.Vector3(24.8147, -0.01, 21.8331), label: "" },
-  { pos: new THREE.Vector3(29.0707, -0.01, 23.9019), label: "FORTUNE FUTURE CITY" },
+  { pos: new THREE.Vector3(24.8147, -0.01, 21.8331), label: "FORTUNE FUTURE CITY" },
   { pos: new THREE.Vector3(25.8645, -0.01, 23.6768), label: "" },
   { pos: new THREE.Vector3(26.7483, -0.01, 26.4457), label: "ALIENS HUB" },
   { pos: new THREE.Vector3(25.7011, -0.01, 28.4867), label: "Destination" },
 ];
 
 const buildingModels = [
-  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
-  { modelPath: "/images/building.glb", rotation: [0, Math.PI / 2, 0], positionOffset: [1, 0, -1] },
-  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [-1, 0, 0.5] },
-  { modelPath: "/images/building.glb", rotation: [0, 0.3, 0], positionOffset: [0.3, 0, 1] },
-  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
-  { modelPath: "/images/building.glb", rotation: [0, Math.PI, 0], positionOffset: [0.5, 0, -0.5] },
-  { modelPath: "/images/building.glb", rotation: [0, 0.6, 0], positionOffset: [1, 0, 1] },
-  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
-  { modelPath: "/images/building.glb", rotation: [0, -0.5, 0], positionOffset: [-0.5, 0, 0] },
-  { modelPath: "/images/building.glb", rotation: [0, 1.2, 0], positionOffset: [0.8, 0, -1] },
-  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
-  { modelPath: "/images/building.glb", rotation: [0, Math.PI / 3, 0], positionOffset: [1, 0, 1] },
-  { modelPath: "/images/building.glb", rotation: [0, -1, 0], positionOffset: [-1, 0, 0] },
-  { modelPath: "/images/building.glb", rotation: [0, 0.8, 0], positionOffset: [0.5, 0, -0.5] },
-  { modelPath: "/images/building.glb", rotation: [0, 0, 0], positionOffset: [1, 0, 1] },
-  { modelPath: "/images/building.glb", rotation: [0, 0.5, 0], positionOffset: [-1, 0, 1] },
-  { modelPath: "/images/building.glb", rotation: [0, 0.2, 0], positionOffset: [0.2, 0, 0.2] },
-  { modelPath: "/images/building.glb", rotation: [0, Math.PI, 0], positionOffset: [0, 0, 0] },
+  {id:1, pos: new THREE.Vector3(21.87071, -0.01, 14.7606), modelPath: "/models/building.glb", rotation: [0, 2, 0], positionOffset: [0, 0, 0] },
+  {id:2, pos: new THREE.Vector3(25.8645, -0.01, 23.6768),  modelPath: "/models/building.glb", rotation: [0, Math.PI / 2, 0], positionOffset: [1, 0, -1] },
+  {id:3, pos: new THREE.Vector3(25.273, -0.01, 13.8962),   modelPath: "/models/building.glb", rotation: [0, 0, 0], positionOffset: [-1, 0, 0.5] },
+  {id:4, pos: new THREE.Vector3(28.1439, -0.01, 14.6916),  modelPath: "/models/building.glb", rotation: [0, 0.3, 0], positionOffset: [0.3, 0, 1] },
+  {id:5, pos: new THREE.Vector3(28.778, -0.01, 15.3756),   modelPath: "/models/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
+  {id:6, pos: new THREE.Vector3(28.0039, -0.01, 15.6636),  modelPath: "/models/building.glb", rotation: [0, Math.PI, 0], positionOffset: [0.5, 0, -0.5] },
+  {id:7, pos: new THREE.Vector3(27.2097, -0.01, 15.6424),  modelPath: "/models/building.glb", rotation: [0, 0.6, 0], positionOffset: [1, 0, 1] },
+  {id:8, pos: new THREE.Vector3(21.87071, -0.01, 14.7606), modelPath: "/models/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
+  {id:9, pos: new THREE.Vector3(21.87071, -0.01, 14.7606), modelPath: "/models/building.glb", rotation: [0, -0.5, 0], positionOffset: [-0.5, 0, 0] },
+  {id:10, pos: new THREE.Vector3(21.87071, -0.01, 14.7606),modelPath: "/models/building.glb", rotation: [0, 1.2, 0], positionOffset: [0.8, 0, -1] },
+  {id:11, pos: new THREE.Vector3(21.87071, -0.01, 14.7606),modelPath: "/models/building.glb", rotation: [0, 0, 0], positionOffset: [0, 0, 0] },
+  {id:12, pos: new THREE.Vector3(21.87071, -0.01, 14.7606),modelPath: "/models/building.glb", rotation: [0, Math.PI / 3, 0], positionOffset: [1, 0, 1] },
+  {id:13, pos: new THREE.Vector3(21.87071, -0.01, 14.7606),modelPath: "/models/building.glb", rotation: [0, -1, 0], positionOffset: [-1, 0, 0] },
+  {id:14, pos: new THREE.Vector3(25.7011, -0.01, 28.4867), modelPath: "/models/building.glb", rotation: [0, 0.8, 0], positionOffset: [0.5, 0, -0.5] },
 ];
 
 // 🚀 Main Scene
@@ -1099,33 +1102,29 @@ export default function CarAnimation() {
       {path.map((p, i) => (
         <TextBlock key={i} text={p.label} position={p.pos} visible={i === currentIndex} />
       ))}
+      
+          {buildingModels.map((building, i) => (
+            <Building
+              key={i}
+              pos={building.pos}
+              modelPath={building.modelPath}
+              rotation={building.rotation}
+              positionOffset={building.positionOffset}
+            />
+          ))}
+    
 
-      {path.map((p, i) => {
-        const config = buildingModels[i] || {};
-        const offset = config.positionOffset || [0, 0, 0];
-        const finalPos = [
-          p.pos.x + offset[0],
-          p.pos.y + offset[1],
-          p.pos.z + offset[2],
-        ];
-        return (
-          <Building
-            key={`b-${i}`}
-            position={finalPos}
-            modelPath={config.modelPath}
-            rotation={config.rotation}
-          />
-        );
-      })}
-
+      
       <FollowCameraController
         cameraRef={cameraRef}
         planeRef={planeRef}
         carRef={carRef}
         planeLanded={planeLanded}
       />
+      
 
       <OrbitControls />
+      
     </Canvas>
   );
 }
