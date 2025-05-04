@@ -65,7 +65,7 @@ const lines = [
 
 const GolfSection = () => {
   return (
-    <div className="relative w-full h-[110vh] md:h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
+    <div className="relative w-full  h-[120vh] md:h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
 
 
       {/* Vector line image repeated 4 times vertically on the left */}
@@ -157,11 +157,11 @@ const GolfSection = () => {
      
 
       {/* Bottom Text and Button */}
-      <div className="relative z-10 flex flex-col justify-between px-4 xsm:px-6 md:px-16 pb-8 md:pb-16  md:-mt-12 ">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-60 max-w-6xl mx-auto text-sm md:text-base leading-relaxed -mt-[20rem] md:mt-10">
+      <div className="relative z-10 flex flex-col justify-between px-4 xsm:px-6 md:px-16 pb-8 md:pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-60 max-w-6xl mx-auto text-sm md:text-base leading-relaxed xxs:-mt-[25rem] xs:-mt-[25rem] xsm:-mt-[20rem] md:mt-10 ">
 
           {/* Left Paragraph */}
-          <p className="font-belkinlight md:text-2xl px-2 md:px-0 text-justify">
+          <p className="font-belkinlight xxs:text-xs xs:text-base xsm:text-lg md:text-2xl px-2 md:px-0 text-justify">
             The blooming forest beckons with its captivating allure, promising an idyllic haven where nature’s grandeur and <span className="font-nostalgic text-[#c9a164]">luxury living</span> converge seamlessly amidst the natural oasis, one can truly “get high on Oxygen”.
           </p>
 

@@ -246,7 +246,7 @@ const animate = () => {
         <div className="h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
           
           {/* Section 2 */}
-          <div className="md:h-[300vh] bg-red-300 flex items-center justify-center">
+          <div className="md:h-[300vh] flex items-center justify-center">
             <GolfSection />
           </div>
 
