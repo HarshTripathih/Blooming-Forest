@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import GolfSection from "./components/golfGroundSection";
 import ExploreMapPage from "./map/page";
-import CarMove from "./projects/page";
+import CarMove from "./components/car";
 import Footer from "./components/footer";
 import GallerySection from "./components/gallary";
 
