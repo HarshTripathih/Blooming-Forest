@@ -9,6 +9,9 @@ import GallerySection from "./components/gallary";
 
 import { Bokor } from "next/font/google";
 import UnrivalledViews from "./components/unrevailed";
+import AmenitiesSection from "./components/classAminities";
+import FourLevelsAppreciation from "./components/LevelofAppereation";
+import Testimonials from "./components/testimonials";
 
 const bokorFont = Bokor({
   subsets: ['latin'],
@@ -238,15 +241,15 @@ const animate = () => {
 
 
       {/* Section 2 and 3 and 4 together in normal flow */}
-        <div className="h-[400vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
+        <div className="h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
           
           {/* Section 2 */}
-          <div className="h-[200vh] bg-red-300 flex items-center justify-center">
+          <div className="h-[300vh] bg-red-300 flex items-center justify-center">
             <GolfSection />
           </div>
 
           {/* Section 3 */}
-          <div className="h-[100vh] bg-white flex items-center justify-center">
+          <div className="h-[127vh] bg-white flex items-center justify-center">
             <UnrivalledViews/>
           </div>
 
@@ -301,6 +304,14 @@ const animate = () => {
       {/* Section 5 */}
       <section className="sticky top-0 h-screen">
         <ExploreMapPage />
+      </section>
+
+      <section className="sticky top-0 h-[150vh]">
+        <FourLevelsAppreciation/>
+      </section>
+
+      <section className="sticky top-0 h-[200vh]">
+        <AmenitiesSection/>
       </section>
 
       {/* Section 6 */}
@@ -396,6 +407,11 @@ const animate = () => {
             ))}
           </div>
         </div>
+      </section>
+      
+      {/*------------- Testimonial section---------- */}
+      <section className="sticky top-0 h-[80vh] bg-white">
+        <Testimonials/>
       </section>
 
       {/* Section 10 */}

@@ -1103,7 +1103,7 @@ export default function CarAnimation() {
         <TextBlock key={i} text={p.label} position={p.pos} visible={i === currentIndex} />
       ))}
       
-          {buildingModels.map((building, i) => (
+          {/* {buildingModels.map((building, i) => (
             <Building
               key={i}
               pos={building.pos}
@@ -1111,7 +1111,7 @@ export default function CarAnimation() {
               rotation={building.rotation}
               positionOffset={building.positionOffset}
             />
-          ))}
+          ))} */}
     
 
       

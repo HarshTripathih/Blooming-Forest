@@ -55,9 +55,32 @@
 
 import Image from "next/image";
 
+
+const lines = [
+  '/lines/lineunrevailed.svg',
+  '/lines/lineunrevailed.svg',
+  '/lines/lineunrevailed.svg',
+  '/lines/lineunrevailed.svg',
+]
+
 const GolfSection = () => {
   return (
     <div className="relative w-full h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
+
+
+      {/* Vector line image repeated 4 times vertically on the left */}
+            <div className="absolute left-6 md:left-24 top-0 h-full z-0 flex flex-row justify-between gap-[8rem]">
+              {lines.map((line, i) => (
+                <div key={i} className="h-[200vh] left-[55rem] relative w-px">
+                  <Image
+                    src={ line }
+                    alt="Vertical line"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              ))}
+        </div>
       
       {/* Top Text */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center pt-16 px-6 md:px-16">
@@ -117,7 +140,7 @@ const GolfSection = () => {
             </p>
             <div className="mt-6 md:mt-12 flex justify-end">
               <button
-                className="border border-[#c9a164] text-[#c9a164] px-6 py-2 rounded-md transition duration-300 hover:bg-[#c9a164] hover:text-black"
+                className="border bg-[#031c00] border-[#c9a164] text-[#c9a164] px-6 py-2 rounded-md transition duration-300 hover:bg-[#c9a164] hover:text-black"
                 style={{
                   boxShadow: "4px 4px 10px #c9a164",
                 }}
