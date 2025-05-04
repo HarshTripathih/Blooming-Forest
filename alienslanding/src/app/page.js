@@ -9,7 +9,7 @@ import GallerySection from "./components/gallary";
 
 import { Bokor } from "next/font/google";
 import UnrivalledViews from "./components/unrevailed";
-import AmenitiesSection from "./components/classAminities";
+import AmenitiesSection from "./components/ClassAminities";
 import FourLevelsAppreciation from "./components/LevelofAppereation";
 import Testimonials from "./components/testimonials";
 
