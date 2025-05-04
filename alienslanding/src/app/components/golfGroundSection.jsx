@@ -71,7 +71,7 @@ const GolfSection = () => {
       {/* Vector line image repeated 4 times vertically on the left */}
             <div className="absolute left-6 md:left-24 top-0 h-full z-0 flex flex-row justify-between gap-[8rem]">
               {lines.map((line, i) => (
-                <div key={i} className="h-[200vh] left-[55rem] relative w-px">
+                <div key={i} className="h-[200vh] left-[70rem] relative w-px">
                   <Image
                     src={ line }
                     alt="Vertical line"

@@ -59,7 +59,7 @@ export default function Testimonials() {
       <section className="w-full px-6 py-24 text-center relative">
 
         {/* Vector line image repeated 8 times vertically on the left */}
-        <div className="absolute left-6 md:left-24 top-0 h-full z-0 flex flex-row justify-between gap-[11rem]">
+        <div className="absolute left-6 md:left-24 top-0 h-full z-0 flex flex-row justify-between gap-[2rem] sm:gap-[11rem]">
         {lines.map((line, i) => (
             <div key={i} className="h-[100vh] left-[1rem] relative bg-black/20 w-px">
             <Image

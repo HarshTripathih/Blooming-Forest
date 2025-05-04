@@ -172,10 +172,10 @@ const animate = () => {
     <div className="relative w-full h-[700vh]"> {/* total height = sections × 100vh */}
       {/* Section 1 */}
       <section className={`sticky top-0 h-screen w-full flex items-center justify-center bg-[#0d1c0f] ${bokorFont.variable}`}>
-        <div className="relative flex w-full h-full overflow-hidden">
+        <div className="relative flex flex-col sm:flex-row w-full h-full overflow-hidden">
 
-          {/* Left Video - 1/3 width */}
-          <div className="relative w-1/3 h-full overflow-hidden">
+          {/* Left Video - Full width on mobile, 1/3 on larger screens */}
+          <div className="relative w-full sm:w-1/3 h-1/2 sm:h-full overflow-hidden">
             <video
               src="/videos/heroleft.mp4"
               className="absolute top-0 left-0 w-full h-full object-cover"
@@ -184,7 +184,7 @@ const animate = () => {
               loop
               playsInline
             />
-            {/* Left Border Overlay */}
+            {/* Border Overlay */}
             <img
               src="/images/videoborder.svg"
               alt="Left Border"
@@ -192,19 +192,19 @@ const animate = () => {
             />
           </div>
 
-          {/* Right Video - 2/3 width with elliptical mask */}
-          <div className="relative w-2/3 h-full overflow-hidden bg-[#031c00]">
-          <div className="absolute top-0 left-0 w-full h-full mask-custom overflow-hidden">
-          <video
-            src="/videos/heroright.mp4"
-            className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-        </div>
-            {/* Right Border Overlay */}
+          {/* Right Video - Full width on mobile, 2/3 on larger screens */}
+          <div className="relative w-full sm:w-2/3 h-1/2 sm:h-full overflow-hidden bg-[#031c00]">
+            <div className="absolute top-0 left-0 w-full h-full mask-custom overflow-hidden">
+              <video
+                src="/videos/heroright.mp4"
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+            {/* Border Overlay */}
             <img
               src="/images/videoborder.svg"
               alt="Right Border"
@@ -215,42 +215,44 @@ const animate = () => {
           {/* Full Dark Transparent Overlay */}
           <div className="absolute inset-0 bg-black/40 z-20 pointer-events-none" />
 
-          {/* Center Text on top of everything */}
-          <div className="absolute inset-0 flex items-center justify-center text-white z-30">
-          <div className="absolute z-30 text-white text-center p-6 rounded-2xl">
-            <h1 className="font-nostalgic text-4xl md:text-9xl mb-4">
-              <span className="p-[2px]">{bloomingLetters}</span>&nbsp;
-              <span className="font-waterfallregular text-[14rem]">{forestLetters}</span>
+          {/* Center Text Content */}
+          <div className="absolute inset-0 flex items-center justify-center text-white z-30 p-4 text-center">
+            <div className="z-30 text-white rounded-2xl">
+            <h1 className="font-nostalgic text-3xl xs:text-4xl md:text-6xl lg:text-8xl xl:text-9xl mb-4 leading-tight">
+              {/* Stack on small screens, inline on larger */}
+              <span className="block sm:inline p-[2px]">{bloomingLetters}</span>
+              <span className="block sm:inline font-waterfallregular text-[4rem] xs:text-[7rem] sm:text-[9rem] md:text-[11rem] lg:text-[14rem] sm:ml-2">
+                {forestLetters}
+              </span>
             </h1>
-            <p className="font-belkinregular text-lg md:text-3xl bg-[linear-gradient(to_right,#A2A2A2,#C2C2C2,#F9F9F9)] bg-clip-text text-transparent">
-              Embrace a lifestyle where the harmony of nature<br />
-              and the comforts of modern living intertwine
-            </p>
-          </div>
+
+              <p className="font-belkinregular text-base xsm:text-lg sm:text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-[#A2A2A2] via-[#C2C2C2] to-[#F9F9F9] bg-clip-text text-transparent">
+                Embrace a lifestyle where the harmony of nature<br className="hidden sm:block" />
+                and the comforts of modern living intertwine
+              </p>
+            </div>
           </div>
 
           {/* Decorative Corner Frames */}
-          <img src="/images/borderframe.svg" className="absolute top-4 left-4 w-16 md:w-24 z-40" />
-          <img src="/images/borderframe.svg" className="absolute top-4 right-4 w-16 md:w-24 rotate-90 z-40" />
-          <img src="/images/borderframe.svg" className="absolute bottom-4 left-4 w-16 md:w-24 -rotate-90 z-40" />
-          <img src="/images/borderframe.svg" className="absolute bottom-4 right-4 w-16 md:w-24 -rotate-180 z-40" />
+          <img src="/images/borderframe.svg" className="absolute top-2 left-2 w-10 sm:w-16 md:w-24 z-40" />
+          <img src="/images/borderframe.svg" className="absolute top-2 right-2 w-10 sm:w-16 md:w-24 rotate-90 z-40" />
+          <img src="/images/borderframe.svg" className="absolute bottom-2 left-2 w-10 sm:w-16 md:w-24 -rotate-90 z-40" />
+          <img src="/images/borderframe.svg" className="absolute bottom-2 right-2 w-10 sm:w-16 md:w-24 -rotate-180 z-40" />
         </div>
       </section>
-
-
 
 
       {/* Section 2 and 3 and 4 together in normal flow */}
         <div className="h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
           
           {/* Section 2 */}
-          <div className="h-[300vh] bg-red-300 flex items-center justify-center">
+          <div className="md:h-[300vh] bg-red-300 flex items-center justify-center">
             <GolfSection />
           </div>
 
           {/* Section 3 */}
-          <div className="h-[127vh] bg-white flex items-center justify-center">
-            <UnrivalledViews/>
+          <div className="h-[120vh] bg-white flex items-center justify-center">
+            <UnrivalledViews />
           </div>
 
           {/* Section 4 */}
@@ -299,6 +301,8 @@ const animate = () => {
           </div>
 
         </div>
+
+        
 
       
       {/* Section 5 */}
