@@ -65,7 +65,7 @@ const lines = [
 
 const GolfSection = () => {
   return (
-    <div className="relative w-full  h-[120vh] md:h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
+    <div className="relative w-full  h-[130vh] md:h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
 
 
       {/* Vector line image repeated 4 times vertically on the left */}
@@ -158,7 +158,7 @@ const GolfSection = () => {
 
       {/* Bottom Text and Button */}
       <div className="relative z-10 flex flex-col justify-between px-4 xsm:px-6 md:px-16 pb-8 md:pb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-60 max-w-6xl mx-auto text-sm md:text-base leading-relaxed xxs:-mt-[25rem] xs:-mt-[25rem] xsm:-mt-[20rem] md:mt-10 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-60 max-w-6xl mx-auto text-sm md:text-base leading-relaxed xxs:-mt-[25rem] xs:-mt-[25rem] xsm:-mt-[25rem] md:mt-10 ">
 
           {/* Left Paragraph */}
           <p className="font-belkinlight xxs:text-xs xs:text-base xsm:text-lg md:text-2xl px-2 md:px-0 text-justify">

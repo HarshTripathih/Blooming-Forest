@@ -251,7 +251,7 @@ const animate = () => {
           </div>
 
           {/* Section 3 */}
-          <div className="h-[120vh] bg-white flex items-center justify-center">
+          <div className="h-[100vh] bg-white flex items-center justify-center">
             <UnrivalledViews />
           </div>
 
@@ -268,10 +268,10 @@ const animate = () => {
                   transition: 'opacity 0.4s ease, transform 0.4s ease',
                 }}
               >
-                <h2 className="text-xs xxs:text-sm sm:text-4xl md:text-5xl font-bold text-white mb-1 xxs:mb-2 sm:mb-4">
+                <h2 className="font-nostalgic text-xs xxs:text-sm sm:text-4xl md:text-5xl font-bold text-white mb-1 xxs:mb-2 sm:mb-4">
                   Prime Location
                 </h2>
-                <p className="text-xs xxs:text-base sm:text-lg md:text-xl text-white">
+                <p className="font-belkinlight  text-xs xxs:text-base sm:text-lg md:text-xl text-white">
                   Nestled in the heart of the city, offering unparalleled convenience and charm.
                 </p>
               </div>

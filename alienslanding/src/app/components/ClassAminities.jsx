@@ -259,8 +259,8 @@ export default function AmenitiesSection() {
       {/* Heading */}
       <div className="text-center space-y-2">
         <p className="text-sm">06/05</p>
-        <p className="text-lg">Our best in</p>
-        <h2 className="text-4xl font-nostalgic text-[#edd9ba]">Class Amenities</h2>
+        <p className="text-4xl font-nostalgic">Our best in</p>
+        <h2 className="text-7xl font-nostalgic text-[#edd9ba]">Class Amenities</h2>
       </div>
 
       {/* Main selected content */}
