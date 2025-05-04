@@ -65,7 +65,7 @@ const lines = [
 
 const GolfSection = () => {
   return (
-    <div className="relative w-full h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
+    <div className="relative w-full h-[110vh] md:h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
 
 
       {/* Vector line image repeated 4 times vertically on the left */}
@@ -84,10 +84,10 @@ const GolfSection = () => {
       
       {/* Top Text */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center pt-16 px-6 md:px-16">
-        <h1 className="font-belkinlight text-3xl md:text-7xl  max-w-5xl">
+        <h1 className="font-belkinlight text-xl md:text-7xl  max-w-5xl">
           Embrace a lifestyle where<br />
           <span className="">
-            <span className="text-white text-3xl md:text-5xl font-light leading-snug max-w-4xl">the </span>
+            <span className="text-white text-xl md:text-7xl font-light leading-snug max-w-4xl">the </span>
             <span className="font-nostalgic text-[#c9a164]">harmony of nature </span>
           </span> 
           and <br />
@@ -97,37 +97,69 @@ const GolfSection = () => {
       </div>
 
       {/* Main Image with Border Overlay */}
-      <div className="relative flex-1 w-full my-12">
-        {/* Main Image */}
-        <div className="absolute inset-0 z-0">
+    <div className="relative flex-1 w-full my-6 md:my-12 min-h-[60vh]">
+
+      {/* Main Image Layer */}
+      <div className="absolute inset-0 z-0">
+        {/* Mobile to Medium (xxs to md) */}
+        <div className="relative block md:hidden w-full 
+          h-[40vh] xsm:h-[50vh] sm:h-[55vh] md:h-[60vh]">
           <Image
-            src="/images/golf-ground.png" // your main golf ground image
+            src="/images/golf-ground.png"
             alt="Golf Ground"
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-            className="mix-blend-normal"
+            width={800}
+            height={600}
+            className="object-cover w-full h-full"
           />
-          {/* Black transparent overlay */}
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
-        {/* Border Image */}
-        <div className="absolute inset-0 z-10">
+        {/* Large and above (md+) */}
+        <div className="hidden md:block absolute inset-0">
           <Image
-            src="/images/videoborder.svg" // save your uploaded border as public/images/border.png
+            src="/images/golf-ground.png"
+            alt="Golf Ground"
+            fill
+            className="object-cover mix-blend-normal"
+          />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+      </div>
+
+      {/* Border Overlay Layer */}
+      <div className="absolute inset-0 z-10">
+        {/* Mobile to Medium (xxs to md) */}
+        <div className="relative block md:hidden w-full 
+          h-[40vh] xsm:h-[50vh] sm:h-[55vh] md:h-[60vh]">
+          <Image
+            src="/images/videoborder.svg"
             alt="Border"
-            layout="fill"
-            objectFit="cover"
-            className="scale-[1.02]"
+            width={800}
+            height={600}
+            className="object-cover w-full h-full scale-[1.02]"
+            priority
+          />
+        </div>
+
+        {/* Large and above (md+) */}
+        <div className="hidden md:block absolute inset-0">
+          <Image
+            src="/images/videoborder.svg"
+            alt="Border"
+            fill
+            className="object-cover scale-[1.02]"
             priority
           />
         </div>
       </div>
+    </div>
+
+     
 
       {/* Bottom Text and Button */}
-      <div className="relative z-10 flex flex-col justify-between px-6 md:px-16 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-60 max-w-6xl mx-auto text-sm md:text-base leading-relaxed mt-10">
+      <div className="relative z-10 flex flex-col justify-between px-4 xsm:px-6 md:px-16 pb-8 md:pb-16  md:-mt-12 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-60 max-w-6xl mx-auto text-sm md:text-base leading-relaxed -mt-[20rem] md:mt-10">
+
           {/* Left Paragraph */}
           <p className="font-belkinlight md:text-2xl px-2 md:px-0 text-justify">
             The blooming forest beckons with its captivating allure, promising an idyllic haven where nature’s grandeur and <span className="font-nostalgic text-[#c9a164]">luxury living</span> converge seamlessly amidst the natural oasis, one can truly “get high on Oxygen”.
