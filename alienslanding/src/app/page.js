@@ -243,10 +243,10 @@ const animate = () => {
 
 
       {/* Section 2 and 3 and 4 together in normal flow */}
-        <div className="xsm:h-[310vh] sm:h-[400vh] md:h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
+        <div className="xsm:h-[300vh] sm:h-[400vh] md:h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
           
           {/* Section 2 */}
-          <div className="sm:h-[220vh] md:h-[300vh] flex items-center justify-center">
+          <div className="md:h-[300vh] flex items-center justify-center">
             <GolfSection />
           </div>
 
