@@ -243,20 +243,20 @@ const animate = () => {
 
 
       {/* Section 2 and 3 and 4 together in normal flow */}
-        <div className="h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
+        <div className="xsm:h-[310vh] sm:h-[400vh] md:h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
           
           {/* Section 2 */}
-          <div className="md:h-[300vh] flex items-center justify-center">
+          <div className="sm:h-[220vh] md:h-[300vh] flex items-center justify-center">
             <GolfSection />
           </div>
 
           {/* Section 3 */}
-          <div className="h-[100vh] bg-white flex items-center justify-center">
+          <div className="md:h-[128vh] bg-white flex items-center justify-center">
             <UnrivalledViews />
           </div>
 
           {/* Section 4 */}
-          <div ref={secondSecRef} className="h-screen flex items-center justify-center relative overflow-hidden backdrop-blur-sm bg-black/50">
+          <div ref={secondSecRef} className="xxs:h-[30vh] xs:h-[30vh] xsm:h-[40vh] sm:h-[50vh] md:h-screen flex items-center justify-center relative overflow-hidden backdrop-blur-sm bg-black/50">
             <div className="flex items-center justify-between w-full h-full relative">
 
               {/* Left Side Content */}
@@ -283,9 +283,9 @@ const animate = () => {
                   className={`
                     absolute top-0 left-0 object-cover
                     w-[100%] h-[27vh] xxs:w-[100%] xxs:h-[30vh]
-                    xs:w-[100%] xs:h-[55vh]
-                    xsm:w-[100%] xsm:h-[60vh]
-                    sm:w-[100%] sm:h-[70vh]
+                    xs:w-[100%] xs:h-[30vh]
+                    xsm:w-[100%] xsm:h-[40vh]
+                    sm:w-[100%] sm:h-[60vh]
                     md:w-[100%] md:h-[100%]
                     lg:w-[100%] lg:h-[100%]
                     xl:w-[100%] xl:h-[100%]
@@ -301,8 +301,6 @@ const animate = () => {
           </div>
 
         </div>
-
-        
 
       
       {/* Section 5 */}

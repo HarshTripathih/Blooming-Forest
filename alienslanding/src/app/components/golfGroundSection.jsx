@@ -158,7 +158,7 @@ const GolfSection = () => {
 
       {/* Bottom Text and Button */}
       <div className="relative z-10 flex flex-col justify-between px-4 xsm:px-6 md:px-16 pb-8 md:pb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-60 max-w-6xl mx-auto text-sm md:text-base leading-relaxed xxs:-mt-[25rem] xs:-mt-[25rem] xsm:-mt-[25rem] md:mt-10 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-60 max-w-6xl mx-auto text-sm md:text-base leading-relaxed xxxs:-mt-[30rem] xxs:-mt-[30rem] xs:-mt-[30rem] xsm:-mt-[25rem] sm:-mt-[0.5rem] md:mt-10 ">
 
           {/* Left Paragraph */}
           <p className="font-belkinlight xxs:text-xs xs:text-base xsm:text-lg md:text-2xl px-2 md:px-0 text-justify">
