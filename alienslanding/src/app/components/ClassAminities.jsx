@@ -342,7 +342,7 @@ export default function AmenitiesSection() {
       {/* Footer */}
       <div className="flex items-center justify-between border-t border-white/20 pt-8">
         <h4 className="text-lg md:text-2xl text-[#edd9ba]">Come Visit Us Now</h4>
-        <button className="bg-gradient-to-b from-[#f6e6c7] to-[#edd9ba] text-black px-6 py-2 rounded-full shadow-md hover:scale-105 transition">
+        <button className="text-base md:text-xl font-belkinlight bg-gradient-to-b from-[#f6e6c7] to-[#edd9ba] text-black px-3 py-2 md:px-6 md:py-2 rounded-full shadow-md hover:scale-105 transition">
           BOOK A SITE VISIT
         </button>
       </div>
