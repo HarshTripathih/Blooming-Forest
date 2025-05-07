@@ -56,12 +56,12 @@ export default function Testimonials() {
 
   return (
     <>
-      <section className="w-full px-6 py-24 text-center relative">
+      <section className="w-full px-6 py-24 text-center relative 2xl:mb-10">
 
         {/* Vector line image repeated 8 times vertically on the left */}
-        <div className="absolute left-6 md:left-24 top-0 h-full z-0 flex flex-row justify-between gap-[2rem] sm:gap-[11rem]">
+        <div className="absolute left-6 md:left-24 top-0 h-full z-0 flex flex-row justify-between gap-[2rem] sm:gap-[11rem] md:gap-[5rem] lg:gap-[11rem]  2xl:gap-[15rem]">
         {lines.map((line, i) => (
-            <div key={i} className="h-[100vh] left-[1rem] relative bg-black/20 w-px">
+            <div key={i} className="h-[100vh] 2xl:h-[60vh] left-[1rem] relative bg-black/20 w-px">
             <Image
                 src={line}
                 alt="Vertical line"
@@ -111,9 +111,9 @@ export default function Testimonials() {
       </section>
 
       {/* Bottom CTA Section */}
-      <div className="bg-[#031c00] text-white flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 space-y-4 md:space-y-0">
-        <h3 className="text-2xl md:text-3xl font-belkinlight">Come Visit Us Now</h3>
-        <button className="bg-gradient-to-r from-[#f9e2c5] to-[#edd1a1] text-black px-6 py-3 rounded-md shadow hover:scale-105 transition">
+      <div className="bg-[#031c00] text-white flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 2xl:py-20 space-y-4 md:space-y-0">
+        <h3 className="text-2xl md:text-3xl 2xl:text-6xl font-belkinlight">Come Visit Us Now</h3>
+        <button className="bg-gradient-to-r from-[#f9e2c5] to-[#edd1a1] text-black px-6 py-3 2xl:py-6 2xl:px-12 rounded-md shadow hover:scale-105 transition">
           BOOK A SITE VISIT
         </button>
       </div>

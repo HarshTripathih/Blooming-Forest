@@ -66,13 +66,11 @@ const GolfSection = () => {
   return (
     <div className="relative w-full xxs:h-[100vh] xs:h-[110vh] xsm:h-[125vh] sm:h-[130vh] md:h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
       {/* Vector lines on the left */}
-      <div className="absolute left-2 xxs:left-4 sm:left-10 md:left-24 top-0 h-full z-0 flex gap-8">
+      <div className="absolute xxs:left-[5rem] xs:left-[10rem] xsm:left-[13rem] sm:left-[22rem] md:left-[55rem] 2xl:left-[85rem] top-0 h-full z-0 flex gap-20 md:gap-40 2xl:gap-40">
         {lines.map((line, i) => (
           <div
             key={i}
-            className={`h-[200vh] relative w-px ${
-              i > 1 ? "hidden xsm:block" : ""
-            }`}
+            className={`h-[200vh] relative w-px `}
           >
             <Image
               src={line}
@@ -159,9 +157,9 @@ const GolfSection = () => {
 
       {/* Bottom Text and Button */}
       <div className="relative z-10 flex flex-col justify-between 
-  px-4 xxs:px-4 xs:px-5 xsm:px-6 md:px-16 
-  xxs:-mt-[10rem] xs:-mt-[8rem] xsm:-mt-60 sm:-mt-32 md:mt-10 
-  xxs:pb-20 xs:pb-20 xsm:pb-[4rem] sm:pb-[5rem] md:pb-16">
+                        px-4 xxs:px-4 xs:px-5 xsm:px-6 md:px-16 
+                        xxs:-mt-[10rem] xs:-mt-[8rem] xsm:-mt-60 sm:-mt-32 md:mt-10 
+                        xxs:pb-20 xs:pb-20 xsm:pb-[4rem] sm:pb-[5rem] md:pb-16">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-60 max-w-6xl mx-auto text-justify text-[11px] xxs:text-xs xs:text-sm xsm:text-base sm:text-lg md:text-2xl leading-relaxed">
           {/* Left Paragraph */}

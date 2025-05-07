@@ -243,7 +243,7 @@ const animate = () => {
 
 
       {/* Section 2 and 3 and 4 together in normal flow */}
-        <div className="xsm:h-[300vh] sm:h-[400vh] md:h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
+        <div className="xsm:h-[300vh] sm:h-[315vh] md:h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
           
           {/* Section 2 */}
           <div className="md:h-[300vh] flex items-center justify-center">
@@ -256,7 +256,7 @@ const animate = () => {
           </div>
 
           {/* Section 4 */}
-          <div ref={secondSecRef} className="xxs:h-[30vh] xs:h-[30vh] xsm:h-[40vh] sm:h-[50vh] md:h-screen flex items-center justify-center relative overflow-hidden backdrop-blur-sm bg-black/50">
+          <div ref={secondSecRef} className="xxs:h-[30vh] xs:h-[30vh] xsm:h-[40vh] sm:h-[50vh] md:h-screen 2xl:-mt-[7.5rem] flex items-center justify-center relative overflow-hidden backdrop-blur-sm bg-black/50">
             <div className="flex items-center justify-between w-full h-full relative">
 
               {/* Left Side Content */}
@@ -308,7 +308,7 @@ const animate = () => {
         <ExploreMapPage />
       </section>
 
-      <section className="sticky top-0 h-[150vh]">
+      <section className="sticky top-0 xs:h-screen md:h-[150vh]">
         <FourLevelsAppreciation/>
       </section>
 
@@ -334,7 +334,7 @@ const animate = () => {
       </section>
 
       {/* Section 7 */}
-      <section className=" h-[400vh] ">
+      <section className=" md:h-[400vh]">
           <CarMove />
       </section>
 
