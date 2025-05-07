@@ -259,23 +259,23 @@ export default function AmenitiesSection() {
       {/* Heading */}
       <div className="text-center space-y-2">
         <p className="text-sm">06/05</p>
-        <p className="text-4xl font-nostalgic">Our best in</p>
-        <h2 className="text-7xl font-nostalgic text-[#edd9ba]">Class Amenities</h2>
+        <p className="text-xl md:text-4xl font-nostalgic">Our best in</p>
+        <h2 className="text-3xl md:text-7xl font-nostalgic text-[#edd9ba]">Class Amenities</h2>
       </div>
 
       {/* Main selected content */}
       <div
-        className="relative rounded-xl text-black p-6 md:p-10 space-y-4 h-[400px] md:h-[500px] overflow-hidden flex flex-col justify-end bg-cover bg-center"
+        className="relative rounded-xl text-black p-6 md:p-10 space-y-4 h-[200px] md:h-[400px] md:h-[500px] overflow-hidden flex flex-col justify-end bg-cover bg-center"
         style={{
           backgroundImage: `url(${data[activeIndex].image})`,
         }}
       >
         <div className="bg-[#e2e2e2]/20 backdrop-blur-sm p-4 md:p-6 rounded-xl max-w-2xl">
-          <h3 className="text-xl md:text-3xl font-belkinlight decoration-[1px] underline-offset-2 font-semibold underline">
+          <h3 className="text-base md:text-xl md:text-3xl font-belkinlight decoration-[1px] underline-offset-2 font-semibold underline">
             {data[activeIndex].title}
           </h3>
-          <p className="text-2xl leading-relaxed font-belkinlight">{data[activeIndex].description}</p>
-          <a href="#" className="underline decoration-[1px] underline-offset-2 text-2xl block mt-2">
+          <p className="text-xs md:text-2xl leading-relaxed font-belkinlight">{data[activeIndex].description}</p>
+          <a href="#" className="underline decoration-[1px] underline-offset-2 text-base md:text-2xl block mt-2">
             See in detail.
           </a>
         </div>
@@ -290,7 +290,7 @@ export default function AmenitiesSection() {
           <div
             key={index}
             className={clsx(
-              'min-w-[300px] w-[300px] h-[500px] rounded-xl cursor-pointer flex-shrink-0 transition-all border-4 overflow-hidden relative flex flex-col',
+              'w-[200px] md:min-w-[300px] md:w-[300px] h-[300px] md:h-[500px] rounded-xl cursor-pointer flex-shrink-0 transition-all border-4 overflow-hidden relative flex flex-col',
               activeIndex === index
                 ? 'border-[#edd9ba]'
                 : 'border-transparent hover:border-[#edd9ba]/50'
@@ -310,14 +310,14 @@ export default function AmenitiesSection() {
             {/* Content */}
             <div className="h-1/2 bg-[#e2e2e2] p-4 space-y-2 flex flex-col justify-between">
               <div>
-                <h3 className="text-2xl font-semibold underline decoration-[1px] underline-offset-2 text-black">
+                <h3 className="text-sm md:text-2xl font-semibold underline decoration-[1px] underline-offset-2 text-black">
                   {item.title}
                 </h3>
-                <p className="text-xl text-black line-clamp-4">
+                <p className="text-xs md:text-xl text-black line-clamp-4">
                   {item.description}
                 </p>
               </div>
-              <a href="#" className="underline decoration-[1px] underline-offset-2 text-xl text-black block">
+              <a href="#" className="underline decoration-[1px] underline-offset-2 text-sm md:text-xl text-black block">
                 See in detail.
               </a>
             </div>

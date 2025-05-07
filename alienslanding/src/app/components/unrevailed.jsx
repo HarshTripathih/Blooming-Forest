@@ -442,7 +442,7 @@ export default function UnrivalledViews() {
       {/* Header */}
       <div className="relative z-10 mb-12">
         <p className="text-sm text-black/50">01/08</p>
-        <h2 className="text-4xl md:text-5xl font-belkinlight text-black/40 mt-2">
+        <h2 className="text-2xl md:text-5xl font-belkinlight text-black/40 mt-2">
           What‘s special about <br />
           <span className="font-nostalgic text-black font-medium tracking-[0.15em]">
             Blooming Forest ?
@@ -453,12 +453,12 @@ export default function UnrivalledViews() {
       {/* Text + Images */}
       <div className="relative z-10 flex flex-col lg:flex-row gap-10 items-start justify-between">
         {/* Label */}
-        <p className="mt-4 lg:w-1/3 underline decoration-[1px] underline-offset-2 font-belkinlight text-3xl">
+        <p className="mt-4 lg:w-1/3 underline decoration-[1px] underline-offset-2 font-belkinlight text-2xl md:text-3xl">
         {content[current]?.title}
       </p>
 
       <div className="lg:w-2/3 flex justify-end">
-        <div className='lg:w-2/3 text-xl text-black font-belkinlight leading-relaxed'>
+        <div className='lg:w-2/3 text-lg md:text-xl text-black font-belkinlight leading-relaxed'>
           {content[current]?.description}
         </div>
       </div>
@@ -477,7 +477,7 @@ export default function UnrivalledViews() {
           {images.map((src, index) => (
             <div
               key={index}
-              className="w-[70%] lg:w-[10%] h-[400px] rounded-2xl overflow-hidden bg-gray-300 relative flex-shrink-0"
+              className="w-[100%] md:w-[70%] lg:w-[10%] h-[200px] md:h-[400px] rounded-2xl overflow-hidden bg-gray-300 relative flex-shrink-0"
             >
               <Image
                 src={src}
@@ -491,37 +491,37 @@ export default function UnrivalledViews() {
       </div>
 
       {/* Slider & Arrows */}
-      <div className="relative z-10 flex items-center justify-center mt-[4rem] gap-8">
-  {/* Left arrow */}
-  <button onClick={handlePrev}>
-    <ChevronLeft className="w-12 h-12 text-black hover:scale-125 transition"
-      strokeWidth={1}
-    />
-  </button>
+     <div className="relative z-10 flex items-center justify-center -mt-[6rem] md:mt-[4rem] gap-8">
+        {/* Left arrow */}
+        <button onClick={handlePrev}>
+          <ChevronLeft className="w-12 h-12 text-black hover:scale-125 transition"
+            strokeWidth={1}
+          />
+        </button>
 
-  {/* Track bar */}
-  <div
-    ref={trackRef}
-    className="w-full h-[2px] bg-black relative rounded-full cursor-pointer"
-  >
-    {/* Thumb */}
-    <div
-      ref={thumbRef}
-      className="absolute top-1/2 h-4 w-8 bg-[#edd9ba] rounded-full -translate-y-1/2 transition-all duration-300 shadow-md"
-      style={{
-        left: `${(current / (images.length - 1)) * 100}%`,
-        transform: 'translate(-50%, -50%)',
-      }}
-    ></div>
-  </div>
+        {/* Track bar */}
+        <div
+          ref={trackRef}
+          className="w-full h-[2px] bg-black relative rounded-full cursor-pointer"
+        >
+          {/* Thumb */}
+          <div
+            ref={thumbRef}
+            className="absolute top-1/2 h-4 w-8 bg-[#edd9ba] rounded-full -translate-y-1/2 transition-all duration-300 shadow-md"
+            style={{
+              left: `${(current / (images.length - 1)) * 100}%`,
+              transform: 'translate(-50%, -50%)',
+            }}
+          ></div>
+        </div>
 
-  {/* Right arrow */}
-  <button onClick={handleNext}>
-    <ChevronRight className="w-12 h-12 text-black hover:scale-125 transition" 
-      strokeWidth={1}
-    />
-  </button>
-</div>
+        {/* Right arrow */}
+        <button onClick={handleNext}>
+          <ChevronRight className="w-12 h-12 text-black hover:scale-125 transition" 
+            strokeWidth={1}
+          />
+        </button>
+    </div>
 
     </section>
   )
