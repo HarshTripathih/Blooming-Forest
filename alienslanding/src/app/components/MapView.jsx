@@ -214,11 +214,13 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import CarAnimation from "./CarAnimation";
 
 export default function MapView() {
+  const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
   const [zoomIn, setZoomIn] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showMap, setShowMap] = useState(true);
@@ -273,7 +275,30 @@ export default function MapView() {
     4: { top: "29.5%", left: "56.1%" },
   };
 
+  // Scroll observer to detect when section is in view
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Zoom logic
+  useEffect(() => {
+    if (!inView) return;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
@@ -304,40 +329,43 @@ export default function MapView() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, inView]);
 
   return (
-    <div className="relative h-[200vh] w-full">
-      {/* Zooming map */}
-      <div
-        className="fixed top-0 left-0 w-full h-full origin-center z-0"
-        style={{
-          transform: zoomIn ? "scale(3)" : "scale(1)",
-          transition: "transform 1s ease-in-out",
-        }}
-      >
-        {showMap && !zoomTransitionComplete && (
-          <Image
-            src="/images/hyderabadmap.svg"
-            alt="Hyderabad Map"
-            layout="fill"
-            objectFit="cover"
-          />
-        )}
-        {showClouds && zoomTransitionComplete && (
-          <Image
-            src="/images/sky.jpg"
-            alt="Clouds"
-            layout="fill"
-            objectFit="cover"
-            className="transition-opacity duration-1000"
-            style={{ opacity: zoomIn ? 1 : 0 }}
-          />
-        )}
-      </div>
+    <div ref={sectionRef} className="relative h-[100vh] w-full">
+      {/* Map Zoom Section: Only when in view */}
+      {inView && (
+        <div
+          className="fixed top-0 left-0 w-full h-full origin-center z-0"
+          style={{
+            transform: zoomIn ? "scale(3)" : "scale(1)",
+            transition: "transform 1s ease-in-out",
+          }}
+        >
+          {showMap && !zoomTransitionComplete && (
+            <Image
+              src="/images/hyderabadmap.svg"
+              alt="Hyderabad Map"
+              layout="fill"
+              objectFit="cover"
+            />
+          )}
+          {showClouds && zoomTransitionComplete && (
+            <Image
+              src="/images/sky.jpg"
+              alt="Clouds"
+              layout="fill"
+              objectFit="cover"
+              className="transition-opacity duration-1000"
+              style={{ opacity: zoomIn ? 1 : 0 }}
+            />
+          )}
+        </div>
+      )}
 
-      {/* Quadrant buttons (1–4) */}
-      {showBoxes &&
+      {/* Quadrant Selector Boxes */}
+      {inView &&
+        showBoxes &&
         [1, 2, 3, 4].map((num) => (
           <div
             key={num}
@@ -358,40 +386,46 @@ export default function MapView() {
           </div>
         ))}
 
-      {/* Quadrant content box bg-[#0b1407] */}
-      <div className="fixed bottom-28 left-10 text-white p-6 rounded-lg max-w-md z-30 shadow-lg font-['Plus_Jakarta_Sans']">
-        <h2 className="text-xl font-bold mb-4 flex items-center space-x-3">
-          <span className="border border-white text-white w-6 h-6 rounded-sm flex items-center justify-center text-sm font-bold">
-            {activeQuadrant}
-          </span>
-          <span className="font-bold text-2xl font-nostalgic">
-            {quadrantData[activeQuadrant].title}
-          </span>
-        </h2>
+      {/* Info Box */}
+      {inView && (
+        <div className="fixed bottom-28 left-10 text-white p-6 rounded-lg max-w-md z-30 shadow-lg font-['Plus_Jakarta_Sans']">
+          <h2 className="text-xl font-bold mb-4 flex items-center space-x-3">
+            <span className="border border-white text-white w-6 h-6 rounded-sm flex items-center justify-center text-sm font-bold">
+              {activeQuadrant}
+            </span>
+            <span className="font-bold text-2xl font-nostalgic">
+              {quadrantData[activeQuadrant].title}
+            </span>
+          </h2>
 
-        <ul className="list-disc pl-6 space-y-2 text-base font-light">
-          {quadrantData[activeQuadrant].points.map((point, idx) => (
-            <li className="font-belkinlight" key={idx}>{point}</li>
+          <ul className="list-disc pl-6 space-y-2 text-base font-light">
+            {quadrantData[activeQuadrant].points.map((point, idx) => (
+              <li className="font-belkinlight" key={idx}>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Bottom Bar Selector */}
+      {inView && (
+        <div className="fixed bottom-10 left-[9rem] transform -translate-x-1/2 flex space-x-4 z-40">
+          {[1, 2, 3, 4].map((num) => (
+            <div
+              key={num}
+              onClick={() => setActiveQuadrant(num)}
+              className={`w-6 h-2 cursor-pointer transition-colors duration-300 ${
+                activeQuadrant === num ? "bg-white" : "bg-gray-500"
+              }`}
+            />
           ))}
-        </ul>
-      </div>
+        </div>
+      )}
 
-      {/* Bottom bar quadrant selector */}
-      <div className="fixed bottom-10 left-[9rem] transform -translate-x-1/2 flex space-x-4 z-40">
-        {[1, 2, 3, 4].map((num) => (
-          <div
-            key={num}
-            onClick={() => setActiveQuadrant(num)}
-            className={`w-6 h-2 cursor-pointer transition-colors duration-300 ${
-              activeQuadrant === num ? "bg-white" : "bg-gray-500"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* 3D scene overlay */}
-      {zoomIn && (
-        <div className="fixed top-0 left-0 w-full h-full z-10">
+      {/* Car Animation Overlay */}
+      {inView && zoomIn && (
+        <div className="fixed top-0 left-0 w-full h-full z-10 pointer-events-none">
           <CarAnimation zoomed={zoomIn} />
         </div>
       )}

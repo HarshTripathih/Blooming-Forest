@@ -12,6 +12,7 @@ import UnrivalledViews from "./components/unrevailed";
 import AmenitiesSection from "./components/ClassAminities";
 import FourLevelsAppreciation from "./components/LevelofAppereation";
 import Testimonials from "./components/testimonials";
+import MapView from "./components/MapView";
 
 const bokorFont = Bokor({
   subsets: ['latin'],
@@ -169,7 +170,7 @@ const animate = () => {
   
 
   return (
-    <div className="relative w-full h-[700vh]"> {/* total height = sections × 100vh */}
+    <div className="relative w-full h-[600vh]"> {/* total height = sections × 100vh */}
       {/* Section 1 */}
       <section className={`sticky top-0 h-screen w-full flex items-center justify-center bg-[#0d1c0f] ${bokorFont.variable}`}>
         <div className="relative flex flex-col sm:flex-row w-full h-full overflow-hidden">
@@ -305,32 +306,32 @@ const animate = () => {
       
       {/* Section 5 */}
       <section className="sticky top-0 h-screen">
-        <ExploreMapPage />
+        <MapView/>
       </section>
 
       <section className="sticky top-0 xs:h-screen md:h-[150vh]">
         <FourLevelsAppreciation/>
       </section>
 
-      <section className="sticky top-0 h-[200vh]">
+      <section className="sticky top-0 h-[100vh] md:h-[200vh]">
         <AmenitiesSection/>
       </section>
 
       {/* Section 6 */}
-      <section ref={interiorRef} className="sticky top-0 h-screen bg-white">
-      <img
-          // src="https://img.freepik.com/free-photo/3d-rendering-modern-dining-room-living-room-with-luxury-decor_105762-1934.jpg"
-          src="/images/hubsite.JPG"
-          alt="Interior Design"
-          className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-200 ease-out"
-          style={{
-            transform: `scale(${interiorScale})`
-          }}
-        />
-        <div className="relative text-white z-10 text-center p-8">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Elegant Interiors</h2>
-          <p>Designed for comfort and sophistication</p>
-        </div>
+      <section ref={interiorRef} className="bg-red-300 sticky top-0 h-[60vh] md:h-screen bg-white">
+        <img
+            // src="https://img.freepik.com/free-photo/3d-rendering-modern-dining-room-living-room-with-luxury-decor_105762-1934.jpg"
+            src="/images/hubsite.JPG"
+            alt="Interior Design"
+            className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-200 ease-out"
+            style={{
+              transform: `scale(${interiorScale})`
+            }}
+          />
+          <div className="relative text-white z-10 text-center p-8">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Elegant Interiors</h2>
+            <p>Designed for comfort and sophistication</p>
+          </div>
       </section>
 
       {/* Section 7 */}

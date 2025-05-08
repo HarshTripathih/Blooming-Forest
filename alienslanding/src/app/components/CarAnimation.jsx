@@ -1078,7 +1078,17 @@ export default function CarAnimation() {
   };
 
   return (
-    <Canvas camera={{ position: [0, 10, 30], fov: 50 }} onCreated={({ camera }) => (cameraRef.current = camera)}>
+    <Canvas camera={{ position: [0, 10, 30], fov: 70 }} onCreated={({ camera }) => (cameraRef.current = camera)}
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      pointerEvents: "none", // ✅ crucial to allow scroll
+      zIndex: 10,
+    }}
+    >
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
 
