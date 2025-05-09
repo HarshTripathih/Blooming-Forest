@@ -12,7 +12,6 @@ import AmenitiesSection from "./components/ClassAminities";
 import FourLevelsAppreciation from "./components/LevelofAppereation";
 import Testimonials from "./components/testimonials";
 import MapView from "./components/MapView";
-import VerticalScrollSection from "./components/mapSec";
 
 const images = [
   "/images/fetured1.jpg",
@@ -55,8 +54,24 @@ export default function Sectionsliding() {
     offset: ["start end", "end start"], // starts when section top hits bottom of viewport, ends when bottom hits top
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], [0, -images.length * 400 + window.innerWidth]); // each img ~400px wide
+  // 1) state to hold viewport width
+  const [vw, setVw] = useState(0);
 
+  // 2) read it once on mount
+  useEffect(() => {
+    setVw(window.innerWidth);
+    // optional: listen for resize if you want dynamic resizing
+    const onResize = () => setVw(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // 3) now safe to use vw in your transform
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -images.length * 400 + vw]   // vw is 0 on the server, real value on client
+  );
 
   const targetValues = useRef({
     interiorScale: 1,
