@@ -522,63 +522,63 @@ import React from "react";
 const mediaBlocks = [
   {
     image: "/images/image1.jpeg",              
-    imageWidth: "w-[9rem] sm:w-[20rem]",
-    imageHeight: "h-[6rem] sm:h-[15rem]",
+    imageWidth: "w-[6rem] sm:w-[20rem]",
+    imageHeight: "h-[3rem] sm:h-[15rem]",
   },
   {
     videoOnly: "/videos/video1.mp4",              
-    videoWidth: "w-[10rem] sm:w-[25rem]",
-    videoHeight: "h-[10rem] sm:h-[30rem]",
+    videoWidth: "xxs:w-[7rem] xs:w-[9.5rem] sm:w-[25rem]",
+    videoHeight: "xxs:h-[7rem] xs:h-[7rem] sm:h-[30rem]",
   },
   {
     image: "/images/image2.jpeg",            
-    imageWidth: "w-[10rem] sm:w-[25rem]",
-    imageHeight: "h-[6rem] sm:h-[13rem]",
+    imageWidth: "w-[8rem] sm:w-[25rem]",
+    imageHeight: "h-[4rem] sm:h-[13rem]",
   },
   {
     videoOnly: "/videos/video2.mp4",
-    videoWidth: "w-[9rem] sm:w-80",
-    videoHeight: "h-[9rem] sm:h-96",
+    videoWidth: "w-[7rem] sm:w-80",
+    videoHeight: "h-[7rem] sm:h-96",
   },
   {
     image: "/images/image3.jpeg",
-    imageWidth: "w-[9rem] sm:w-[19rem]",
+    imageWidth: "w-[7rem] sm:w-[19rem]",
     imageHeight: "h-[5rem] sm:h-[10rem]",
   },
   {
     videoOnly: "/videos/video3.mp4",
-    videoWidth: "w-[9rem] sm:w-[17rem]",
-    videoHeight: "h-[9rem] sm:h-96",
+    videoWidth: "w-[7rem] sm:w-[17rem]",
+    videoHeight: "h-[7rem] sm:h-96",
   },
   {
     image: "/images/image4.jpeg",
-    imageWidth: "w-[9rem] sm:w-[20rem]",
-    imageHeight: "h-[5rem] sm:h-[13rem]",
+    imageWidth: "w-[12rem] sm:w-[20rem]",
+    imageHeight: "h-[5.5rem] sm:h-[13rem]",
   },
   {
     videoOnly: "/videos/video4.mp4",
-    videoWidth: "w-[9rem] sm:w-80",
-    videoHeight: "h-[9rem] sm:h-[20rem]",
+    videoWidth: "w-[7rem] sm:w-80",
+    videoHeight: "h-[7rem] sm:h-[20rem]",
   },
   {
     image: "/images/image4.jpeg",
     imageWidth: "w-[9rem] sm:w-[19rem]",
-    imageHeight: "h-[5rem] sm:h-[13rem]",
+    imageHeight: "h-[4rem] sm:h-[13rem]",
   },
   {
     videoOnly: "/videos/video5.mp4",
-    videoWidth: "w-[9rem] sm:w-[18rem]",
-    videoHeight: "h-[9rem] sm:h-96",
+    videoWidth: "w-[7rem] sm:w-[18rem]",
+    videoHeight: "h-[7rem] sm:h-96",
   },
   {
     image: "/images/image3.jpeg",
-    imageWidth: "w-[6rem] sm:w-[12.7rem]",
+    imageWidth: "w-[4rem] sm:w-[12.7rem]",
     imageHeight: "h-[3.5rem] sm:h-[6rem]",
   },
   {
     videoOnly: "/videos/video6.mp4",
-    videoWidth: "w-[6rem] sm:w-[15rem]",
-    videoHeight: "h-[9rem] sm:h-[22rem]",
+    videoWidth: "xxs:w-[6rem] xs:w-[8.5rem] sm:w-[15rem]",
+    videoHeight: "xxs:h-[9rem] xs:h-[9rem] sm:h-[22rem]",
   },
   {
     image: "/images/image3.jpeg",
@@ -587,8 +587,8 @@ const mediaBlocks = [
   },
   {
     image: "/images/image3.jpeg",
-    imageWidth: "w-[6rem] sm:w-[11rem]",
-    imageHeight: "h-[3.5rem] sm:h-[6rem]",
+    imageWidth: "xxs:w-[6.5rem] xs:w-[9rem] sm:w-[11rem]",
+    imageHeight: "xxs:h-[3.5rem] xs:h-[3.5rem] sm:h-[6rem]",  //last column last row
   },
 ];
 
@@ -604,7 +604,7 @@ export default function GallerySection() {
   const blockChunks = splitIntoChunks(mediaBlocks, 14);
 
   return (
-    <div className="relative w-full h-screen bg-white overflow-x-scroll overflow-y-hidden snap-x snap-mandatory">
+    <div className="relative w-full h-[100vh] bg-[#031c00] overflow-x-scroll overflow-y-hidden snap-x snap-mandatory">
       <h2 className="text-3xl sm:text-7xl text-center mb-5 p-4 font-nostalgic text-[#a2790d]">
         Gallery
       </h2>
@@ -651,20 +651,20 @@ export default function GallerySection() {
 
 function getPositionStyles(index) {
   const positions = [
-    "top-[2rem] left-4 sm:top-0 sm:left-20 z-10",                        // stone bird      
-    "top-[4rem] left-[6rem] sm:top-8 sm:left-[42rem] z-10",
-    "top-[2rem] left-[9rem] sm:top-0 sm:left-[60rem] z-10",
-    "top-[14rem] left-[1rem] sm:top-96 sm:left-[5rem] z-10",
-    "top-[12rem] left-[10rem] sm:top-[16rem] sm:left-[71rem] z-20",     // small bird 2 (👈 should be in front)
-    "top-[8rem] left-[3rem] sm:top-[8rem] sm:left-[22rem] z-10",        // eagle video 
-    "top-[25rem] left-[1rem] sm:top-[35rem] sm:left-[29rem] z-10",      // last row parrot
-    "top-[28rem] left-[5rem] sm:top-[28rem] sm:left-[53rem] z-10",      // green sparrow
-    "top-[2rem] left-[12rem] sm:top-0 sm:left-[90rem] z-10",            
+    "top-[0rem] left-4 sm:top-0 sm:left-20 z-10",                        // stone bird      
+    "top-[0rem] left-[15rem] sm:top-8 sm:left-[42rem] z-10",
+    "top-[2rem] left-[5rem] sm:top-0 sm:left-[60rem] z-10",
+    "top-[16rem] left-[1rem] sm:top-96 sm:left-[5rem] z-10",
+    "top-[12rem] left-[15rem] sm:top-[16rem] sm:left-[71rem] z-20",     // small bird 2 (👈 should be in front)
+    "top-[8rem] left-[1rem] sm:top-[8rem] sm:left-[22rem] z-10",        // eagle video 
+    "top-[29rem] left-[1rem] sm:top-[35rem] sm:left-[29rem] z-10",      // last row parrot
+    "top-[21rem] left-[4rem] sm:top-[28rem] sm:left-[53rem] z-0",      // green sparrow
+    "top-[8rem] left-[9.5rem] sm:top-0 sm:left-[90rem] z-10",            
     "top-[15rem] left-[10rem] sm:top-[24rem] sm:left-[77rem] z-0",      // black sparrow (👈 should be behind)
-    "top-[4rem] left-[3rem] sm:top-[0rem] sm:left-[27rem] z-10",        // small bird 1
-    "top-[14rem] left-[12rem] sm:top-[16rem] sm:left-[94rem] z-10",     //couple video
-    "top-[14rem] left-[2rem] sm:top-[16rem] sm:left-[7rem] z-10",       //small image 2
-    "top-[35rem] left-[15.5rem] sm:top-[41rem] sm:left-[98rem] z-10",   // small image 3
+    "top-[4rem] left-[2rem] sm:top-[0rem] sm:left-[27rem] z-10",        // small bird 1
+    "top-[20rem] left-[16rem] sm:top-[16rem] sm:left-[94rem] z-10",     //couple video
+    "top-[24rem] left-[9rem] sm:top-[16rem] sm:left-[7rem] z-10",       //small image 2
+    "top-[31rem] left-[15.5rem] sm:top-[41rem] sm:left-[98rem] z-10",   // small image 3
   ];
   return positions[index % positions.length] || "";
 }

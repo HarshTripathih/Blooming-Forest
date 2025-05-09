@@ -522,15 +522,15 @@ const animate = () => {
       </section>
 
       {/* Section 10 */}
-      <section className="sticky top-0 h-screen bg-white">
+      <section className="sticky top-0  xs:h-[80vh] xsm:h-[85vh] md:h-screen bg-white">
           <GallerySection />
       </section>
 
       {/* Section 11 */}
       <section className="sticky top-0 bg-[#0a0f05] py-16 overflow-hidden relative">
           <div className="max-w-4xl mx-auto text-center mb-10 px-4">
-            <h2 className="text-7xl font-extrabold text-white mb-4 font-nostalgic text-[#a2790d]">Our Trusted Brands</h2>
-            <p className="text-lg text-gray-300">
+            <h2 className="text-3xl md:text-7xl font-extrabold text-white mb-4 font-nostalgic text-[#a2790d]">Our Trusted Brands</h2>
+            <p className="text-base md:text-xl text-gray-300">
               Partnering with top-tier brands to deliver trusted solutions across industries. Explore the power of collaboration.
             </p>
           </div>
