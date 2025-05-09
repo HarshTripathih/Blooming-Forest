@@ -59,7 +59,7 @@ export default function Testimonials() {
       <section className="w-full px-6 py-24 text-center relative 2xl:mb-10">
 
         {/* Vector line image repeated 8 times vertically on the left */}
-        <div className="absolute left-6 md:left-24 top-0 h-full z-0 flex flex-row justify-between gap-[2rem] sm:gap-[11rem] md:gap-[5rem] lg:gap-[11rem]  2xl:gap-[15rem]">
+        <div className="absolute left-5 md:left-24 top-0 h-full z-0 flex flex-row justify-between gap-[2.9rem] sm:gap-[11rem] md:gap-[5rem] lg:gap-[11rem]  2xl:gap-[15rem]">
         {lines.map((line, i) => (
             <div key={i} className="h-[100vh] 2xl:h-[60vh] left-[1rem] relative bg-black/20 w-px">
             <Image
@@ -75,7 +75,7 @@ export default function Testimonials() {
 
         {/* Title */}
         <div className="mb-12">
-          <p className="text-sm text-black/50">07/08</p>
+          {/* <p className="text-sm text-black/50">07/08</p> */}
           <h2 className="text-4xl md:text-5xl font-nostalgic text-black">Testimonials</h2>
         </div>
 
@@ -90,8 +90,8 @@ export default function Testimonials() {
               key={i}
               className="flex-shrink-0 w-full md:w-[70%] px-6 snap-start flex flex-col items-start justify-start text-start mx-auto"
             >
-              <p className="md:text-xl leading-relaxed text-4xl text-black font-belkinlight max-w-2xl">{t.text}</p>
-              <p className="mt-6 font-medium font-belkinlight text-black text-2xl">{t.name}</p>
+              <p className="md:text-xl leading-relaxed text-xl text-black font-belkinlight max-w-2xl">{t.text}</p>
+              <p className="mt-6 font-medium font-belkinlight text-black text-xl md:text-2xl">{t.name}</p>
             </div>
           ))}
         </div>

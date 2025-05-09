@@ -2,17 +2,29 @@
 
 import { useEffect, useRef, useState } from "react";
 import GolfSection from "./components/golfGroundSection";
-import ExploreMapPage from "./map/page";
 import CarMove from "./components/car";
 import Footer from "./components/footer";
 import GallerySection from "./components/gallary";
-
+import { useScroll, useTransform, motion } from 'framer-motion';
 import { Bokor } from "next/font/google";
 import UnrivalledViews from "./components/unrevailed";
 import AmenitiesSection from "./components/ClassAminities";
 import FourLevelsAppreciation from "./components/LevelofAppereation";
 import Testimonials from "./components/testimonials";
 import MapView from "./components/MapView";
+import VerticalScrollSection from "./components/mapSec";
+
+const images = [
+  "/images/fetured1.jpg",
+  "/images/fetured2.jpg",
+  "/images/fetured3.jpg",
+  "/images/fetured4.jpg",
+  "/images/fetured1.jpg",
+  "/images/fetured2.jpg",
+  "/images/fetured3.jpg",
+  "/images/fetured4.jpg",
+];
+
 
 const bokorFont = Bokor({
   subsets: ['latin'],
@@ -22,6 +34,7 @@ const bokorFont = Bokor({
 
 export default function Sectionsliding() {
 
+  const sectionRef = useRef(null);
   const interiorRef = useRef(null);
   const sliderRef = useRef(null);
   const verticalRef = useRef(null);
@@ -36,6 +49,14 @@ export default function Sectionsliding() {
   const [secondSecScale, setSecondSecScale] = useState(1);
   const [isPlaying, setIsPlaying] = useState(true);
   
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"], // starts when section top hits bottom of viewport, ends when bottom hits top
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], [0, -images.length * 400 + window.innerWidth]); // each img ~400px wide
+
 
   const targetValues = useRef({
     interiorScale: 1,
@@ -305,7 +326,7 @@ const animate = () => {
 
       
       {/* Section 5 */}
-      <section className="sticky top-0 h-screen">
+      <section className="sticky top-0 h-[50vh] md:h-screen">
         <MapView/>
       </section>
 
@@ -340,80 +361,148 @@ const animate = () => {
       </section>
 
       {/* Section 8 (holds both Section 8 content and Section 9) */}
-      <section className="relative h-[200vh] bg-white"> 
+      <section className="relative h-[400vh] bg-white"> 
         {/* Section 8 content pinned */}
         <div className="sticky top-0 h-screen flex items-center justify-center text-center px-4 z-10">
           <h2 className="text-4xl md:text-6xl font-extrabold">Your Dream Home Awaits</h2>
         </div>
 
         {/* Section 9 scrolls over */}
-        <div ref={sliderRef} className="absolute top-0 w-full h-screen z-20 bg-[#031c00] text-white flex flex-col items-center justify-center" style={{ transform: 'translateY(100vh)' }}>
-          <h2 className="font-nostalgic text-[#a2790d] text-7xl md:text-7xl font-bold mb-6">Featured Projects</h2>
-          <div
-            className="flex space-x-8 overflow-x-hidden px-8 transition-transform duration-200 ease-out"
-            style={{
-              transform: `translateX(-${sliderTranslate}px)`
-            }}
-          >
-            {[
-              "/images/fetured1.jpg",
-              "/images/fetured2.jpg",
-              "/images/fetured3.jpg",
-              "/images/fetured4.jpg",
-            ].map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                className="w-96 h-64 object-cover rounded-lg shadow-lg"
-                alt="Scrolling Property"
-              />
-            ))}
+        <section ref={sectionRef} className="relative h-[300vh]">
+          {/* Sticky container */}
+          <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-[#031c00] text-white z-20 overflow-hidden">
+            <h2 className="font-nostalgic text-[#a2790d] text-3xl md:text-7xl font-bold mb-6">
+              Featured Projects
+            </h2>
+
+            {/* Horizontally scrolling image row */}
+            <motion.div
+              style={{ x }}
+              className="flex space-x-8 px-4"
+            >
+              {images.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  className="w-[40rem] h-[30rem] object-cover rounded-lg shadow-lg"
+                  alt="Scrolling Property"
+                />
+              ))}
+            </motion.div>
           </div>
-        </div>
+        </section>
       </section>
 
       {/* Section 10 (holds both Section 10 content and Section 11) */}
 
-    <section ref={verticalRef} className="sticky top-0 h-screen">
-      <div className="sticky top-0 h-screen flex items-center justify-center pointer-events-none">
-          <div className="absolute left-0 w-1/2 p-8 space-y-6 z-0">
-            {[
-              "/images/vertical1.JPG",
-              "/images/vertical2.JPG",
-              "/images/vertical3.JPG",
-             ].map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt="Vertical Up"
-                className="rounded-lg shadow-lg w-full transition-transform duration-100 ease-out"
-                style={{
-                  transform: `translateY(-${verticalOffset}px)`
-                }}
-              />
-            ))}
-          </div>
-          <div className="absolute right-0 w-1/2 p-8 space-y-6 z-0">
-            {[
-              "/images/vertical4.JPG",
-              "/images/vertical5.jpg",
-            ].map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt="Vertical Down"
-                className="rounded-lg shadow-lg w-full transition-transform duration-100 ease-out"
-                style={{
-                  transform: `translateY(${verticalOffset}px)`
-                }}
-              />
-            ))}
-          </div>
+        <section ref={verticalRef} className="bg-[#031c00]">
+            {/* ✅ Mobile-only layout (xxs/xs/xsm) */}
+            <div className="xsm:hidden relative px-4 py-10 space-y-10">
+        {[
+          {
+            src: "/images/vertical1.JPG",
+            width: "w-4/5",
+            height: "h-64",
+            position: "ml-auto", // image on right → number on left
+          },
+          {
+            src: "/images/vertical2.JPG",
+            width: "w-4/5",
+            height: "h-64",
+            position: "mr-auto", // image on left → number on right
+          },
+          {
+            src: "/images/vertical3.JPG",
+            width: "w-4/5",
+            height: "h-64",
+            position: "ml-auto",
+          },
+          {
+            src: "/images/vertical4.JPG",
+            width: "w-4/5",
+            height: "h-64",
+            position: "mr-auto",
+          },
+          {
+            src: "/images/vertical5.jpg",
+            width: "w-4/5",
+            height: "h-64",
+            position: "ml-auto",
+          },
+        ].map((img, index) => {
+          const isLeft = img.position === "ml-auto"; // image on right, so number on left
+
+          return (
+            <div key={index} className="flex items-center justify-between">
+              {/* Number on the side */}
+              {isLeft ? (
+                <div className="w-1/5 text-right pr-2 font-nostalgic text-white text-7xl font-bold">
+                  {index + 1}
+                </div>
+              ) : null}
+
+              {/* Image container */}
+              <div className={`${img.width} ${img.height} relative`}>
+                <img
+                  src={img.src}
+                  alt={`Image ${index}`}
+                  className="rounded-lg shadow-lg border border-double object-cover w-full h-full"
+                />
+              </div>
+
+              {/* Number on the other side */}
+              {!isLeft ? (
+                <div className="w-1/5 text-left pl-2 font-nostalgic text-white text-7xl font-bold">
+                  {index + 1}
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ✅ Desktop layout (xsm and up) with scroll transform */}
+      <div className="hidden xsm:flex sticky top-0 h-screen items-center justify-center pointer-events-none">
+        <div className="absolute left-[5rem] md:left-0 md:w-1/2 p-8 space-y-6 z-0">
+          {[
+            "/images/vertical1.JPG",
+            "/images/vertical2.JPG",
+            "/images/vertical3.JPG",
+          ].map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt="Vertical Up"
+              className="rounded-lg shadow-lg w-full transition-transform duration-100 ease-out border border-double outline-offset-4 md:border-none"
+              style={{
+                transform: `translateY(-${verticalOffset}px)`
+              }}
+            />
+          ))}
         </div>
-      </section>
+        <div className="absolute right-[5rem] md:right-0 md:w-1/2 p-8 space-y-6 z-0">
+          {[
+            "/images/vertical4.JPG",
+            "/images/vertical5.jpg",
+            "/images/vertical5.jpg",
+          ].map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt="Vertical Down"
+              className="rounded-lg shadow-lg w-full transition-transform duration-100 ease-out border border-double outline-offset-4 md:border-none"
+              style={{
+                transform: `translateY(${verticalOffset}px)`
+              }}
+            />
+          ))}
+        </div>
+      </div>
+        </section>
+
       
       {/*------------- Testimonial section---------- */}
-      <section className="sticky top-0 h-[80vh] bg-white">
+      <section className="sticky top-0 h-[85] md:h-[78vh] 2xl:h-[80vh] bg-white">
         <Testimonials/>
       </section>
 
@@ -455,6 +544,8 @@ const animate = () => {
       <section className="sticky top-0 h-screen">
           <Footer />
       </section>
+
+      
 
     </div>
 
