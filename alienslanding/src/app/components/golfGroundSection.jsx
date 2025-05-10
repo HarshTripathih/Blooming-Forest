@@ -107,7 +107,7 @@ const GolfSection = () => {
           {/* Mobile to Medium */}
           <div className="relative block md:hidden w-full h-[35vh] xxs:h-[40vh] xs:h-[45vh] xsm:h-[55vh] sm:h-[60vh]">
             <video
-              src="/videos/Golf16x9.mp4" // Make sure this file exists in your /public/videos folder
+              src="https://res.cloudinary.com/dqqg1mr0u/video/upload/v1746876924/Golf_16x9_1_u6aiwf.mp4" // Make sure this file exists in your /public/videos folder
               autoPlay
               loop
               muted
