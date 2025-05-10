@@ -102,15 +102,16 @@ const GolfSection = () => {
 
       {/* Main Image with Border Overlay */}
       <div className="relative flex-1 w-full my-6 md:my-12 min-h-[60vh]">
-        {/* Main Image Layer */}
+        {/* Main Video Layer */}
         <div className="absolute inset-0 z-0">
           {/* Mobile to Medium */}
           <div className="relative block md:hidden w-full h-[35vh] xxs:h-[40vh] xs:h-[45vh] xsm:h-[55vh] sm:h-[60vh]">
-            <Image
-              src="/images/golf-ground.png"
-              alt="Golf Ground"
-              width={800}
-              height={600}
+            <video
+              src="/videos/Golf16x9.mp4" // Make sure this file exists in your /public/videos folder
+              autoPlay
+              loop
+              muted
+              playsInline
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-black/30" />
@@ -118,11 +119,13 @@ const GolfSection = () => {
 
           {/* Large and up */}
           <div className="hidden md:block absolute inset-0">
-            <Image
-              src="/images/golf-ground.png"
-              alt="Golf Ground"
-              fill
-              className="object-cover mix-blend-normal"
+            <video
+              src="https://res.cloudinary.com/dqqg1mr0u/video/upload/v1746876924/Golf_16x9_1_u6aiwf.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-black/30" />
           </div>

@@ -12,6 +12,7 @@ import AmenitiesSection from "./components/ClassAminities";
 import FourLevelsAppreciation from "./components/LevelofAppereation";
 import Testimonials from "./components/testimonials";
 import MapView from "./components/MapView";
+import SalesforceModalTrigger from "./components/GlobalFormButton";
 
 const images = [
   "/images/fetured1.jpg",
@@ -207,6 +208,7 @@ const animate = () => {
 
   return (
     <div className="relative w-full h-[600vh]"> {/* total height = sections × 100vh */}
+    <SalesforceModalTrigger/>
       {/* Section 1 */}
       <section className={`sticky top-0 h-screen w-full flex items-center justify-center bg-[#0d1c0f] ${bokorFont.variable}`}>
         <div className="relative flex flex-col sm:flex-row w-full h-full overflow-hidden">

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { ArrowRight } from 'lucide-react';
 
 const SalesforceForm = () => {
   const [formData, setFormData] = useState({
@@ -83,7 +84,7 @@ const SalesforceForm = () => {
 
   return (
     <div className="mt-16 md:mt-20 animate-fade-in-up">
-      <h3 className="text-2xl font-semibold mb-6 text-center">Looking for something specific?</h3>
+      <h3 className="text-2xl font-semibold mb-6 text-center text-white">Looking for something specific?</h3>
       <div className="max-w-lg mx-auto w-full">
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
@@ -92,7 +93,7 @@ const SalesforceForm = () => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Your Name"
-            className="p-3 bg-transparent border border-gray-400 rounded focus:outline-none text-base"
+            className="w-full bg-transparent border-b border-[#d5c9b3] outline-none py-2 placeholder-gray-400 text-white"
             required
           />
 
@@ -102,7 +103,7 @@ const SalesforceForm = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Your Email"
-            className="p-3 bg-transparent border border-gray-400 rounded focus:outline-none text-base"
+            className="bg-transparent border-b border-[#d5c9b3] outline-none text-base py-2 text-white"
             required
           />
 
@@ -110,7 +111,7 @@ const SalesforceForm = () => {
             name="plotsize"
             value={formData.plotsize}
             onChange={handleChange}
-            className="p-3 bg-transparent border border-gray-400 rounded text-base focus:outline-none"
+            className="bg-transparent border-b border-[#d5c9b3] outline-none text-base py-2 text-white"
             required
           >
             <option value="">Select Plot Size*</option>
@@ -123,7 +124,7 @@ const SalesforceForm = () => {
             name="budget"
             value={formData.budget}
             onChange={handleChange}
-            className="p-3 bg-transparent border border-gray-400 rounded text-base focus:outline-none"
+            className="bg-transparent border-b border-[#d5c9b3] outline-none py-2 text-base text-white"
             required
           >
             <option value="">Select Budget</option>
@@ -138,18 +139,18 @@ const SalesforceForm = () => {
             value={formData.designation}
             onChange={handleChange}
             placeholder="Designation"
-            className="p-3 bg-transparent border border-gray-400 rounded focus:outline-none text-base"
+            className="bg-transparent border-b border-[#d5c9b3] outline-none py-2  text-base text-white"
           />
 
           <div className="flex space-x-2">
-            <span className="flex items-center bg-transparent border border-gray-400 rounded px-4 text-base">+91</span>
+            <span className="flex items-center border-b border-[#d5c9b3] outline-none py-2 px-4 text-base text-white">+91</span>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               placeholder="Enter Phone Number"
-              className="flex-1 p-3 bg-transparent border border-gray-400 rounded focus:outline-none text-base"
+              className="flex-1 p-3 bg-transparent border-b border-[#d5c9b3] outline-none py-2 text-base text-white"
               required
             />
           </div>
@@ -157,10 +158,12 @@ const SalesforceForm = () => {
 
           <button
             type="submit"
-            className="w-full px-6 py-2 bg-[#d5c9b3] text-black font-semibold rounded-full hover:bg-white hover:text-black transform hover:translate-x-2 transition-transform text-center"
+            className="flex items-center gap-2 text-[#d5c9b3] group"
           >
-            Submit
+            <div className="w-[100px] h-[2px] bg-[#d5c9b3] -mr-3 group-hover:translate-x-2 transition-transform duration-300" />
+            <ArrowRight className="stroke-[#d5c9b3] w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
+
 
           {status && <p className="text-center text-sm mt-2">{status}</p>}
         </form>
