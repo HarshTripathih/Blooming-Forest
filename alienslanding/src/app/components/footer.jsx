@@ -424,7 +424,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col gap-8">
           <div>
             <h3 className="text-lg md:text-xl font-light mb-4">Disclaimer</h3>
-            <p className="text-sm md:text-base font-light leading-relaxed text-gray-300 text-justify">
+            <p className="text-sm md:text-base font-light leading-relaxed text-base text-justify">
               By using or accessing the webapge, you agree with the Disclaimer without any qualification or limitation. The Company/ Firm reserves the right to terminate, revoke, modify, alter, add and delete any one or more of the terms and conditions outlined in the brochure. The Company/ Firm shall be under no obligation to notify the user of the amendment to the terms and conditions and the user shall be bound by such amended terms and conditions. Computer generated images, walkthroughs and render images used on this webpage are the artist's impression and are indicative of the actual designs. The imagery used on the brochure may not represent actuals or may be indicative of style only. Company/ Firm to ensure that information in the webpage are up to date, accurate and correct, the readers/ users are requested to make their independent enquiry before relying upon the same. For any further information or clarification, reach out to us on our toll free number – 7330640040 or write to us on hub@aliensgroup.in.
             </p>
           </div>
