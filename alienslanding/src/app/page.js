@@ -197,11 +197,11 @@ const animate = () => {
     const forest = "Forest";
 
     const bloomingLetters = blooming.split("").map((letter, index) => (
-      <span key={index} className="letter p-2">{letter}</span>
+      <span key={index} className="letter p-3 md:p-2">{letter}</span>
     ));
 
     const forestLetters = forest.split("").map((letter, index) => (
-      <span key={index} className="letter p-2">{letter}</span>
+      <span key={index} className="letter p-4 md:p-2">{letter}</span>
     ));
 
   
@@ -257,10 +257,10 @@ const animate = () => {
           {/* Center Text Content */}
           <div className="absolute inset-0 flex items-center justify-center text-white z-30 p-4 text-center">
             <div className="z-30 text-white rounded-2xl">
-            <h1 className="font-nostalgic text-3xl xs:text-4xl md:text-6xl lg:text-8xl xl:text-9xl mb-4 leading-tight">
+            <h1 className="font-nostalgic text-3xl xs:text-4xl md:text-6xl lg:text-8xl xl:text-9xl mb-4 tracking-tighter">
               {/* Stack on small screens, inline on larger */}
-              <span className="block sm:inline p-[2px]">{bloomingLetters}</span>
-              <span className="block sm:inline font-waterfallregular text-[4rem] xs:text-[7rem] sm:text-[9rem] md:text-[11rem] lg:text-[14rem] sm:ml-2">
+              <span className="block sm:inline tracking-tight">{bloomingLetters}</span>
+              <span className="block sm:inline font-waterfallregular text-[4rem] xs:text-[5rem] sm:text-[9rem] md:text-[11rem] lg:text-[14rem] sm:ml-2">
                 {forestLetters}
               </span>
             </h1>
@@ -339,24 +339,28 @@ const animate = () => {
             </div>
           </div>
 
+          <section className="xs:h-[100vh] md:h-screen">
+            <MapView/>
+          </section>
+
         </div>
 
       
       {/* Section 5 */}
-      <section className="sticky top-0 h-[50vh] md:h-screen">
+      {/* <section className="sticky top-0 xs:h-[100vh] md:h-screen">
         <MapView/>
-      </section>
+      </section> */}
 
       <section className="sticky top-0 xs:h-screen md:h-[150vh]">
         <FourLevelsAppreciation/>
       </section>
 
-      <section className="sticky top-0 h-[100vh] md:h-[200vh]">
+      <section className="sticky top-0 xxs:h-[140] xs:h-[120vh] md:h-[200vh]">
         <AmenitiesSection/>
       </section>
 
       {/* Section 6 */}
-      <section ref={interiorRef} className="bg-red-300 sticky top-0 h-[60vh] md:h-screen bg-white">
+      <section ref={interiorRef} className="bg-red-300 sticky top-0 xxs:h-[90vh] xs:h-[60vh] md:h-screen bg-white">
         <img
             // src="https://img.freepik.com/free-photo/3d-rendering-modern-dining-room-living-room-with-luxury-decor_105762-1934.jpg"
             src="/images/hubsite.JPG"
