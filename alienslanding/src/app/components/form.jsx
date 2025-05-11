@@ -84,7 +84,7 @@ const SalesforceForm = () => {
 
   return (
     <div className="mt-16 md:mt-20 animate-fade-in-up">
-      <h3 className="text-2xl font-semibold mb-6 text-center text-white">Looking for something specific?</h3>
+      <h3 className="text-2xl font-semibold mb-6 text-center text-[#D5C9B3]">Looking for something specific?</h3>
       <div className="max-w-lg mx-auto w-full">
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input

@@ -33,7 +33,7 @@ const SalesforceModalTrigger = () => {
           >
             {/* Close icon */}
             <button
-              className="absolute top-3 right-3 text-black hover:text-red-500"
+              className="absolute top-3 right-3 text-[#D5C9B3] hover:text-red-500"
               onClick={closeModal}
             >
               <X size={24} />

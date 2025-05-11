@@ -393,11 +393,23 @@ export default function Footer() {
         whileInView="visible"
         viewport={{ once: false, amount: 0.2 }}
       >
-        <div className='flex items-start'>
+        <motion.div 
+        className='flex items-start'
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        >
           <SalesforceForm />
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col items-center md:items-start md:mt-[5rem] text-center md:text-left space-y-4">
+        <motion.div 
+          className="flex flex-col items-center md:items-start md:mt-[5rem] text-center md:text-left space-y-4"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          >
           <h3 className="text-xl font-semibold">Contact Us:</h3>
           <p className="text-base flex items-start gap-2">
             <MapPin className=" md:w-5 md:h-5 md:mt-1" />
@@ -411,7 +423,7 @@ export default function Footer() {
             <Mail className="w-5 h-5" />
             <span><strong>Mail:</strong> marketing@aliensgroup.in</span>
           </p>
-        </div>
+        </motion.div>
       </motion.div>
 
       <motion.div
@@ -419,12 +431,12 @@ export default function Footer() {
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: false, amount: 0.2 }}
       >
         <div className="max-w-7xl mx-auto flex flex-col gap-8">
           <div>
-            <h3 className="text-lg md:text-xl font-light mb-4">Disclaimer</h3>
-            <p className="text-sm md:text-base font-light leading-relaxed text-base text-justify">
+            <h3 className="text-lg md:text-xl font-light text-[#D5C9B3] mb-4">Disclaimer</h3>
+            <p className="text-sm md:text-base font-light leading-relaxed text-[#D5C9B3] text-justify">
               By using or accessing the webapge, you agree with the Disclaimer without any qualification or limitation. The Company/ Firm reserves the right to terminate, revoke, modify, alter, add and delete any one or more of the terms and conditions outlined in the brochure. The Company/ Firm shall be under no obligation to notify the user of the amendment to the terms and conditions and the user shall be bound by such amended terms and conditions. Computer generated images, walkthroughs and render images used on this webpage are the artist's impression and are indicative of the actual designs. The imagery used on the brochure may not represent actuals or may be indicative of style only. Company/ Firm to ensure that information in the webpage are up to date, accurate and correct, the readers/ users are requested to make their independent enquiry before relying upon the same. For any further information or clarification, reach out to us on our toll free number – 7330640040 or write to us on hub@aliensgroup.in.
             </p>
           </div>
