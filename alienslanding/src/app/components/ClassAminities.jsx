@@ -246,18 +246,18 @@ export default function AmenitiesSection() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     document.body.style.overflow = 'hidden';
-  //   } else {
-  //     document.body.style.overflow = 'auto';
-  //   }
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
 
-  //   // Cleanup just in case
-  //   return () => {
-  //     document.body.style.overflow = 'auto';
-  //   };
-  // }, [isOpen]);
+    // Cleanup just in case
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
 
   // 🔘 Click on dot => scroll to that card

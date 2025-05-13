@@ -352,13 +352,25 @@ export default function Footer() {
                 }
               }}
             >
-              {["Facebook", "Instagram", "YouTube"].map((platform, idx) => (
+              {[{
+                social:'Facebook',
+                link:'https://www.facebook.com/people/Aliens-Hub/100083142251753/'
+              },{
+                social:'Instagram',
+                link:'https://www.instagram.com/aliens.hub/'
+              },{
+                social:'YouTube',
+                link:'https://www.youtube.com/@AliensHubhyderabad'
+              },{
+                social:'Linkedin',
+                link:'https://www.linkedin.com/company/aliens-group-pvt-ltd/posts/?feedView=all/'
+              }].map((medias, idx) => (
                 <motion.li
                   key={idx}
                   variants={fadeInUp}
                   className="hover:underline text-base text-center md:text-left"
                 >
-                  <a href="#">{platform}</a>
+                  <a href={medias.link}>{medias.social}</a>
                 </motion.li>
               ))}
             </motion.ul>
@@ -373,13 +385,26 @@ export default function Footer() {
             viewport={{ once: false, amount: 0.2 }}
             variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.2 } } }}
           >
-            {["Corinth Hill", "Old Mango Garden", "Cyntheria", "Breezy Hills"].map((project, idx) => (
+            {[
+              {
+                project:'Corinth Hill',
+                link:'https://alienshub.co.in/corinth_hill/'
+              },{
+                project:'Old Mango Garden',
+                link:''
+              },{
+                project:'Cyntheria',
+                link:''
+              },{
+                project:'Breezy Hills',
+                 link:''
+              }].map((projects, idx) => (
               <motion.li
                 key={idx}
                 variants={fadeInUp}
                 className="hover:underline text-base text-center md:text-left"
               >
-                <a href="#">{project}</a>
+                <a href={projects.link}>{projects.project}</a>
               </motion.li>
             ))}
           </motion.ul>
@@ -409,21 +434,39 @@ export default function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
-          >
+        >
           <h3 className="text-xl font-semibold">Contact Us:</h3>
-          <p className="text-base flex items-start gap-2">
-            <MapPin className=" md:w-5 md:h-5 md:mt-1" />
+
+          {/* Address Link to Google Maps */}
+          <a 
+            href="https://www.google.com/maps?q=Aliens+Hub,+Near+Kadthal+Junction,+Chennaram,+Telangana+509321"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-base flex items-start gap-2 hover:underline"
+          >
+            <MapPin className="md:w-5 md:h-5 md:mt-1" />
             <span><strong>Address:</strong> Aliens Hub, Near Kadthal Junction, Chennaram, Telangana 509321</span>
-          </p>
-          <p className="text-base flex items-center gap-2">
+          </a>
+
+          {/* Phone Link */}
+          <a 
+            href="tel:+917335640040"
+            className="text-base flex items-center gap-2 hover:underline"
+          >
             <Phone className="w-5 h-5" />
             <span><strong>Phone:</strong> +91-7335640040</span>
-          </p>
-          <p className="text-base flex items-center gap-2">
+          </a>
+
+          {/* Email Link */}
+          <a 
+            href="mailto:marketing@aliensgroup.in"
+            className="text-base flex items-center gap-2 hover:underline"
+          >
             <Mail className="w-5 h-5" />
             <span><strong>Mail:</strong> marketing@aliensgroup.in</span>
-          </p>
+          </a>
         </motion.div>
+
       </motion.div>
 
       <motion.div
