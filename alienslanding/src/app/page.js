@@ -84,15 +84,9 @@ export default function Sectionsliding() {
   const lerp = (start, end, factor) => start + (end - start) * factor;
 
   const brandlogos = [
-    "https://nisusfin.com/static/images/nifco-logo.png",
-    "https://img.freepik.com/free-vector/abstract-graphic-logo_1043-36.jpg",
-    "https://t4.ftcdn.net/jpg/07/50/55/09/360_F_750550908_0ELiZ0k3VEcWlGkWx2acRzxLbpJpfw1k.jpg",
-    "https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/06/Handling-Finances.jpg",
-    "https://thumbs.dreamstime.com/z/marketing-financial-business-logo-design-marketing-financial-business-logo-168152542.jpg",
-    "https://logomakerr.ai/uploads/output/2024/02/22/791bc6a3f7bf902f3d979073694b0ce0.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeI373V4iXgZwutrCjV9cAC-H_oRgjEsi9jA&s",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn0-t9ceek3-AF7siv7VWWRchM8rML13vSfg&s",
-    "https://marketplace.canva.com/EAGHon18Id8/1/0/1600w/canva-blue-corporate-illustrative-flat-investment-group-finance-logo-VV79iObP8QI.jpg",
+    "/investors/NisusLogo.png",
+    "/investors/PhoenixLogo.png",
+    "/investors/SwamihLogo.png",
   ];
   
 
@@ -546,13 +540,13 @@ const animate = () => {
 
           <div className="relative w-full overflow-hidden">
             <div ref={brandcontainerRef} className="flex w-max">
-              {[...brandlogos, ...brandlogos].map((logo, index) => (
+              {[...brandlogos, ...brandlogos, ...brandlogos].map((logo, index) => (
                 <div
                   key={index}
                   className="flex-shrink-0 mx-8"
                   style={{ minWidth: "150px", filter: "drop-shadow(0 0 10px rgba(255,255,255,0.1))" }}
                 >
-                  <img src={logo} alt="Brand Logo" className="w-full h-20 object-contain grayscale hover:grayscale-0 transition-all duration-500" />
+                  <img src={logo} alt="Brand Logo" className="w-full h-20 object-contain transition-all duration-500" />
                 </div>
               ))}
             </div>

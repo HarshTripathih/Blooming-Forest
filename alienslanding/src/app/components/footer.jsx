@@ -444,7 +444,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="text-base flex items-start gap-2 hover:underline"
           >
-            <MapPin className="md:w-5 md:h-5 md:mt-1" />
+            <MapPin className="w-10 h-10 md:w-5 md:h-5 -mt-[0.5rem] md:mt-1" />
             <span><strong>Address:</strong> Aliens Hub, Near Kadthal Junction, Chennaram, Telangana 509321</span>
           </a>
 
