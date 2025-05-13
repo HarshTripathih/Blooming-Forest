@@ -52,7 +52,11 @@
 
 
 
+'use client'
 
+import { useState,useEffect } from 'react'
+import { X } from 'lucide-react'
+import SalesforceForm from './form';
 import Image from "next/image";
 
 const lines = [
@@ -63,6 +67,25 @@ const lines = [
 ];
 
 const GolfSection = () => {
+
+    const [isOpen, setIsOpen] = useState(false)
+    const openModal = () => setIsOpen(true)
+    const closeModal = () => setIsOpen(false)
+
+    useEffect(() => {
+      if (isOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+
+      // Cleanup just in case
+      return () => {
+        document.body.style.overflow = 'auto';
+      };
+    }, [isOpen]);
+
+
   return (
     <div className="relative w-full xxs:h-[100vh] xs:h-[110vh] xsm:h-[125vh] sm:h-[130vh] md:h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
       {/* Vector lines on the left */}
@@ -184,19 +207,43 @@ const GolfSection = () => {
             </p>
             <div className="mt-6 md:mt-12 flex justify-end">
               <button
-                className="border bg-[#031c00] border-[#c9a164] text-[#c9a164] px-4 xxs:px-5 xs:px-6 py-2 rounded-md text-xs xxs:text-sm sm:text-base transition duration-300 hover:bg-[#c9a164] hover:text-black"
-                style={{
-                  boxShadow: "4px 4px 10px #c9a164",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.boxShadow = "none")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.boxShadow = "4px 4px 10px #c9a164")
-                }
-              >
-                BOOK A SITE VISIT
-              </button>
+        className="border bg-[#031c00] border-[#c9a164] text-[#c9a164] px-4 xxs:px-5 xs:px-6 py-2 rounded-md text-xs xxs:text-sm sm:text-base transition duration-300 hover:bg-[#c9a164] hover:text-black"
+        style={{
+          boxShadow: '4px 4px 10px #c9a164',
+        }}
+        onClick={openModal}
+        onMouseEnter={(e) => (e.currentTarget.style.boxShadow = 'none')}
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.boxShadow = '4px 4px 10px #c9a164')
+        }
+      >
+        BOOK A SITE VISIT
+      </button>
+
+          {/* Overlay + Modal */}
+              {isOpen && (
+                <div
+                  className="fixed inset-0 z-40 bg-black/30 flex items-center justify-center"
+                  onClick={closeModal}
+                >
+                  <div
+                    className="bg-[#031c00] w-[90%] max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg p-6 relative z-50"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Close icon */}
+                    <button
+                      className="absolute top-3 right-3 text-[#D5C9B3] hover:text-red-500"
+                      onClick={closeModal}
+                    >
+                      <X size={24} />
+                    </button>
+
+                    {/* Your Form */}
+                    <SalesforceForm />
+                  </div>
+                </div>
+              )}
+
             </div>
           </div>
         </div>

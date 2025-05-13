@@ -162,6 +162,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import clsx from 'clsx';
+import { X } from 'lucide-react'
+import SalesforceForm from './form';
 
 const data = [
     {
@@ -215,6 +217,10 @@ const data = [
 ];
 
 export default function AmenitiesSection() {
+
+  const [isOpen, setIsOpen] = useState(false)
+  const openModal = () => setIsOpen(true)
+  const closeModal = () => setIsOpen(false)
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);
   const cardWidth = 300 + 24; // width + gap
@@ -239,6 +245,20 @@ export default function AmenitiesSection() {
       }
     };
   }, []);
+
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     document.body.style.overflow = 'hidden';
+  //   } else {
+  //     document.body.style.overflow = 'auto';
+  //   }
+
+  //   // Cleanup just in case
+  //   return () => {
+  //     document.body.style.overflow = 'auto';
+  //   };
+  // }, [isOpen]);
+
 
   // 🔘 Click on dot => scroll to that card
   const handleDotClick = (index) => {
@@ -342,9 +362,35 @@ export default function AmenitiesSection() {
       {/* Footer */}
       <div className="flex items-center justify-between border-t border-white/20 pt-8">
         <h4 className="text-lg md:text-2xl text-[#edd9ba]">Come Visit Us Now</h4>
-        <button className="text-base md:text-xl font-belkinlight bg-gradient-to-b from-[#f6e6c7] to-[#edd9ba] text-black px-3 py-2 md:px-6 md:py-2 rounded-full shadow-md hover:scale-105 transition">
+        <button 
+          className="text-base md:text-xl font-belkinlight bg-gradient-to-b from-[#f6e6c7] to-[#edd9ba] text-black px-3 py-2 md:px-6 md:py-2 rounded-full shadow-md hover:scale-105 transition"
+          onClick={openModal}
+          >
           BOOK A SITE VISIT
         </button>
+        {/* Overlay + Modal */}
+        {isOpen && (
+          <div
+            className="fixed inset-0 z-40 bg-black/30 flex items-center justify-center"
+            onClick={closeModal}
+          >
+            <div
+              className="bg-[#031c00] w-[90%] max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg p-6 relative z-50"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close icon */}
+              <button
+                className="absolute top-3 right-3 text-[#D5C9B3] hover:text-red-500"
+                onClick={closeModal}
+              >
+                <X size={24} />
+              </button>
+
+              {/* Your Form */}
+              <SalesforceForm />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

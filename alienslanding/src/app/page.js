@@ -282,7 +282,7 @@ const animate = () => {
 
 
       {/* Section 2 and 3 and 4 together in normal flow */}
-        <div className="xsm:h-[300vh] sm:h-[315vh] md:h-[500vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
+        <div className="xsm:h-[300vh] sm:h-[315vh] md:h-[628vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
           
           {/* Section 2 */}
           <div className="md:h-[300vh] flex items-center justify-center">
@@ -339,7 +339,7 @@ const animate = () => {
             </div>
           </div>
 
-          <section className="xs:h-[100vh] md:h-screen">
+          <section className="xs:h-[100vh] md:h-[100vh]">
             <MapView/>
           </section>
 
@@ -351,7 +351,7 @@ const animate = () => {
         <MapView/>
       </section> */}
 
-      <section className="sticky top-0 xs:h-screen md:h-[150vh]">
+      <section className="sticky top-0 xs:h-screen md:h-[125vh]">
         <FourLevelsAppreciation/>
       </section>
 
@@ -360,7 +360,7 @@ const animate = () => {
       </section>
 
       {/* Section 6 */}
-      <section ref={interiorRef} className="bg-red-300 sticky top-0 xxs:h-[90vh] xs:h-[60vh] md:h-screen bg-white">
+      <section ref={interiorRef} className="bg-red-300 sticky top-0 xxs:h-[90vh] xs:h-[60vh] md:h-screen bg-white z-40">
         <img
             // src="https://img.freepik.com/free-photo/3d-rendering-modern-dining-room-living-room-with-luxury-decor_105762-1934.jpg"
             src="/images/hubsite.JPG"
@@ -382,22 +382,22 @@ const animate = () => {
       </section>
 
       {/* Section 8 (holds both Section 8 content and Section 9) */}
-      <section className="relative h-[400vh] bg-white"> 
+      {/* <section className="relative h-[400vh] bg-white">  */}
         {/* Section 8 content pinned */}
-        <div className="sticky top-0 h-screen flex items-center justify-center text-center px-4 z-10">
+        {/* <div className="sticky top-0 h-screen flex items-center justify-center text-center px-4 z-10">
           <h2 className="text-4xl md:text-6xl font-extrabold">Your Dream Home Awaits</h2>
-        </div>
+        </div> */}
 
         {/* Section 9 scrolls over */}
-        <section ref={sectionRef} className="relative h-[300vh]">
+        {/* <section ref={sectionRef} className="relative h-[300vh]"> */}
           {/* Sticky container */}
-          <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-[#031c00] text-white z-20 overflow-hidden">
+          {/* <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-[#031c00] text-white z-20 overflow-hidden">
             <h2 className="font-nostalgic text-[#a2790d] text-3xl md:text-7xl font-bold mb-6">
               Featured Projects
-            </h2>
+            </h2> */}
 
             {/* Horizontally scrolling image row */}
-            <motion.div
+            {/* <motion.div
               style={{ x }}
               className="flex space-x-8 px-4"
             >
@@ -412,15 +412,15 @@ const animate = () => {
             </motion.div>
           </div>
         </section>
-      </section>
+      </section> */}
 
       {/* Section 10 (holds both Section 10 content and Section 11) */}
 
-        <section ref={verticalRef} className="bg-[#031c00]">
+    {/* <section ref={verticalRef} className="bg-[#031c00]"> */}
             {/* ✅ Mobile-only layout (xxs/xs/xsm) */}
-            <div className="xsm:hidden relative px-4 py-10 space-y-10">
-        {[
-          {
+            {/* <div className="xsm:hidden relative px-4 py-10 space-y-10"> */}
+        {/* {[ */}
+          {/* {
             src: "/images/vertical1.JPG",
             width: "w-4/5",
             height: "h-64",
@@ -450,29 +450,30 @@ const animate = () => {
             height: "h-64",
             position: "ml-auto",
           },
-        ].map((img, index) => {
-          const isLeft = img.position === "ml-auto"; // image on right, so number on left
+        // ].map((img, index) => { */}
+          {/* // const isLeft = img.position === "ml-auto"; // image on right, so number on left
 
-          return (
-            <div key={index} className="flex items-center justify-between">
+          // return (
+          //   <div key={index} className="flex items-center justify-between"> */}
               {/* Number on the side */}
-              {isLeft ? (
+
+              {/* {isLeft ? (
                 <div className="w-1/5 text-right pr-2 font-nostalgic text-white text-7xl font-bold">
                   {index + 1}
                 </div>
-              ) : null}
+              ) : null} */}
 
               {/* Image container */}
-              <div className={`${img.width} ${img.height} relative`}>
+              {/* <div className={`${img.width} ${img.height} relative`}>
                 <img
                   src={img.src}
                   alt={`Image ${index}`}
                   className="rounded-lg shadow-lg border border-double object-cover w-full h-full"
                 />
-              </div>
+              </div> */}
 
               {/* Number on the other side */}
-              {!isLeft ? (
+              {/* {!isLeft ? (
                 <div className="w-1/5 text-left pl-2 font-nostalgic text-white text-7xl font-bold">
                   {index + 1}
                 </div>
@@ -480,10 +481,10 @@ const animate = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
 
       {/* ✅ Desktop layout (xsm and up) with scroll transform */}
-      <div className="hidden xsm:flex sticky top-0 h-screen items-center justify-center pointer-events-none">
+      {/* <div className="hidden xsm:flex sticky top-0 h-screen items-center justify-center pointer-events-none">
         <div className="absolute left-[5rem] md:left-0 md:w-1/2 p-8 space-y-6 z-0">
           {[
             "/images/vertical1.JPG",
@@ -519,7 +520,7 @@ const animate = () => {
           ))}
         </div>
       </div>
-        </section>
+  </section> */}
 
       
       {/*------------- Testimonial section---------- */}

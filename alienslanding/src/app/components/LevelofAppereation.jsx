@@ -55,7 +55,7 @@ export default function FourLevelsAppreciation() {
         {/* Video */}
         <video
           ref={videoRef}
-          src="https://res.cloudinary.com/dqqg1mr0u/video/upload/v1746874879/videos/fourlevel_oogqbe.mp4"
+          src="https://res.cloudinary.com/dqqg1mr0u/video/upload/v1747123772/landnewupdated_c3tcgg.mp4"
           className="absolute inset-0 w-full h-full object-cover border border-lg rounded-lg"
           loop
           muted
