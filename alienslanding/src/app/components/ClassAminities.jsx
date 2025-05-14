@@ -349,7 +349,7 @@ export default function AmenitiesSection() {
     >
       {/* Heading */}
       <motion.div
-        initial={{ x: 500, opacity: 1 }}
+        initial={{ x: 200, opacity: 1 }}
         animate={inView ? { x: 0, opacity: 1 } : {}}
         transition={{ duration: 1, ease: 'easeOut' }}
         className="text-center space-y-2"
@@ -363,7 +363,7 @@ export default function AmenitiesSection() {
 
       {/* Main Image Background Section */}
       <motion.div
-        initial={{ x: 500, opacity: 1 }}
+        initial={{ x: 200, opacity: 1 }}
         animate={inView ? { x: 0, opacity: 1 } : {}}
         transition={{ duration: 1.2, ease: 'easeOut' }}
         className="relative rounded-xl text-black p-6 md:p-10 space-y-4 h-[200px] md:h-[500px] overflow-hidden flex flex-col justify-end bg-cover bg-center"
@@ -384,7 +384,7 @@ export default function AmenitiesSection() {
 
       {/* Cards Scrollable */}
       <motion.div
-        initial={{ x: -500, opacity: 1 }}
+        initial={{ x: -200, opacity: 1 }}
         animate={inView ? { x: 0, opacity: 1 } : {}}
         transition={{ duration: 1.3, ease: 'easeOut' }}
         className="flex overflow-x-auto gap-6 pb-4 pr-6 scrollbar-hide"
@@ -449,7 +449,7 @@ export default function AmenitiesSection() {
       {/* Footer */}
       <motion.div
         initial={{ opacity: 1, y: 40 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
+        animate={inView ? { opacity: 1, y: 0 } : {opacity: 1, y: 40}}
         transition={{ duration: 1, ease: 'easeOut' }}
         className="flex items-center justify-between border-t border-white/20 pt-8"
       >
