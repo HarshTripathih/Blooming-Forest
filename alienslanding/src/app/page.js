@@ -13,6 +13,8 @@ import FourLevelsAppreciation from "./components/LevelofAppereation";
 import Testimonials from "./components/testimonials";
 import MapView from "./components/MapView";
 import SalesforceModalTrigger from "./components/GlobalFormButton";
+import UnrivalledScrollWrapper from "./components/UnrivalledScrollWrapper";
+import PrimeLocationScrollWrapper from "./components/PrimeLocationSection";
 
 const images = [
   "/images/fetured1.jpg",
@@ -274,76 +276,16 @@ const animate = () => {
         </div>
       </section>
 
-
-      {/* Section 2 and 3 and 4 together in normal flow */}
-        <div className="xsm:h-[300vh] sm:h-[315vh] md:h-[628vh] bg-white"> {/* 2 sections × 100vh = 200vh */}
-          
-          {/* Section 2 */}
-          <div className="md:h-[300vh] flex items-center justify-center">
-            <GolfSection />
-          </div>
-
-          {/* Section 3 */}
-          <div className="md:h-[128vh] bg-white flex items-center justify-center">
-            <UnrivalledViews />
-          </div>
-
-          {/* Section 4 */}
-          <div ref={secondSecRef} className="xxs:h-[30vh] xs:h-[30vh] xsm:h-[40vh] sm:h-[50vh] md:h-screen 2xl:-mt-[7.5rem] flex items-center justify-center relative overflow-hidden backdrop-blur-sm bg-black/50">
-            <div className="flex items-center justify-between w-full h-full relative">
-
-              {/* Left Side Content */}
-              <div
-                className="absolute left-2 xxs:left-4 sm:left-10 max-w-[240px] xxs:max-w-xs sm:max-w-md text-left"
-                style={{
-                  opacity: 1 - secondSecScale,
-                  transform: `translateY(${(1 - secondSecScale) * 30}px)`,
-                  transition: 'opacity 0.4s ease, transform 0.4s ease',
-                }}
-              >
-                <h2 className="font-nostalgic text-xs xxs:text-sm sm:text-4xl md:text-5xl font-bold text-white mb-1 xxs:mb-2 sm:mb-4">
-                  Prime Location
-                </h2>
-                <p className="font-belkinlight  text-xs xxs:text-base sm:text-lg md:text-xl text-white">
-                  Nestled in the heart of the city, offering unparalleled convenience and charm.
-                </p>
-              </div>
-              {/* Image Container Sliding Right */}
-              <div className="h-full overflow-hidden w-full max-w-full relative">
-                <img
-                  src="https://innovate.co.il/api/optimized-image/9dc7c191b04266b0370ccb1ade1c9c80bebbffb68ecc2e025725af979f5e33cf.jpg?max-w=1920&auto=compress,format"
-                  alt="Interior Design"
-                  className={`
-                    absolute top-0 left-0 object-cover
-                    w-[100%] h-[27vh] xxs:w-[100%] xxs:h-[30vh]
-                    xs:w-[100%] xs:h-[30vh]
-                    xsm:w-[100%] xsm:h-[40vh]
-                    sm:w-[100%] sm:h-[60vh]
-                    md:w-[100%] md:h-[100%]
-                    lg:w-[100%] lg:h-[100%]
-                    xl:w-[100%] xl:h-[100%]
-                    2xl:w-[100%] 2xl:h-[100%]
-                  `}
-                  style={{
-                    transform: `translateX(${(1 - secondSecScale) * 50}%)`,
-                  }}
-                />
-              </div>
-
-            </div>
-          </div>
-
+        {/* Section 2 */}
+          <GolfSection/>
+        {/* Section 3 */}
+          <UnrivalledScrollWrapper/>
+        {/* Section 4 */}
+          <PrimeLocationScrollWrapper/>
+        {/* Section 5 */}
           <section className="xs:h-[100vh] md:h-[100vh]">
             <MapView/>
           </section>
-
-        </div>
-
-      
-      {/* Section 5 */}
-      {/* <section className="sticky top-0 xs:h-[100vh] md:h-screen">
-        <MapView/>
-      </section> */}
 
       <section className="sticky top-0 xs:h-screen md:h-[125vh]">
         <FourLevelsAppreciation/>
@@ -369,7 +311,6 @@ const animate = () => {
             <p>Designed for comfort and sophistication</p>
           </div>
       </section>
-
       {/* Section 7 */}
       <section className=" md:h-[400vh]">
           <CarMove />
@@ -561,7 +502,6 @@ const animate = () => {
           <Footer />
       </section>
 
-      
 
     </div>
 
