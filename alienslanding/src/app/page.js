@@ -280,8 +280,8 @@ const animate = () => {
           <GolfSection/>
         {/* Section 3 */}
           <UnrivalledScrollWrapper/>
-        {/* Section 4 */}
-          <PrimeLocationScrollWrapper/>
+        {/* Section 4 */}   
+        <PrimeLocationScrollWrapper />
         {/* Section 5 */}
           <section className="xs:h-[100vh] md:h-[100vh]">
             <MapView/>

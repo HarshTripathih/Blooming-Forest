@@ -21,7 +21,6 @@ module.exports = {
       
         'xsm': '480px',
         // => @media (min-width: 480px) { ... }
-        'sm': '640px',
       },
       animation: {
         'fade-in-up': 'fadeInUp 1s ease-out both',

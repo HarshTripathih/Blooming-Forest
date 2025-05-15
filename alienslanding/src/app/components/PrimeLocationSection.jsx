@@ -33,11 +33,16 @@ export default function PrimeLocationScrollWrapper() {
       <div className="sticky top-0 h-screen overflow-hidden relative flex items-center justify-center">
 
         {/* Text behind image */}
-        <div className="absolute z-10 xxs:left-[15rem] xs:left-[17rem] xsm:left-[23rem] sm:left-[12rem] md:left-[66rem]  xxs:top-[7rem] xs:top-[10rem] md:top-[25rem] max-w-[25%] xs:max-w-[25%] xsm:max-w-[30%] md:max-w-[70%] text-left">
-          <h2 className="font-nostalgic text-xs xxs:text-sm sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-4">
+        <div className="absolute z-10 
+        xxs:left-[2rem] xs:left-[2rem] xsm:left-[2rem] sm:left-[2rem] md:left-[2rem] lg:left-[66rem]
+        xxs:top-[25rem] xs:top-[40rem] xsm:top-[35rem] sm:top-[33rem] md:top-[45rem]  lg:top-[20rem]
+        w-[80%] xs:max-w-[80%] xsm:max-w-[70%] md:max-w-[70%] lg:max-w-[25%]
+        text-left">
+
+          <h2 className="font-nostalgic text-4xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-4">
             Prime Location
           </h2>
-          <p className="font-belkinlight text-justify text-xs xxs:text-sm sm:text-base md:text-lg text-white leading-relaxed sm:leading-loose tracking-normal sm:tracking-wide">
+          <p className="font-belkinlight text-justify text-lg sm:text-base md:text-lg text-white leading-relaxed sm:leading-loose tracking-normal sm:tracking-wide">
             Nestled in the heart of the city, offering unparalleled convenience and charm.
           </p>
         </div>
@@ -50,7 +55,9 @@ export default function PrimeLocationScrollWrapper() {
             xxs:w-[150%] xxs:h-[50%] 
             xs:w-[140%] xs:h-[50%] 
             xsm:w-[130%] xsm:h-[50%] 
-            sm:w-full sm:h-full 
+            sm:w-[100%] sm:h-[50%] 
+            md:w-[100%] md:h-[50%]
+            lg:w-full lg:h-full
             inset-0
           `}
           style={{
@@ -67,7 +74,9 @@ export default function PrimeLocationScrollWrapper() {
               xxs:w-[67%] xxs:h-[100%]
               xs:w-[71.5%] xs:h-[100%]
               xsm:w-[77%] xsm:h-[100%]
-              sm:w-full sm:h-full
+              sm:w-[100%] sm:h-[100%]
+              md:w-[100%] md:h-[100%]
+              lg:w-full lg:h-full
             `}
           />
         </div>

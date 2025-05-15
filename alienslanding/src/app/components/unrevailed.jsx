@@ -108,7 +108,7 @@ export default function UnrivalledViews() {
     <section className="relative w-full min-h-screen px-6 md:px-24 py-20 bg-white overflow-hidden">
       
       {/* Vector line image repeated 4 times vertically on the left */}
-      <div className="absolute left-6 md:left-24 top-0 h-full z-0 flex flex-row justify-between gap-[8rem]">
+      <div className="absolute  left-6 md:left-24 top-0 h-full z-0 hidden md:flex flex-row justify-between gap-[8rem]">
         {lines.map((line, i) => (
           <div key={i} className="h-[100vh] left-[1rem] relative bg-black/20 w-px">
             <Image

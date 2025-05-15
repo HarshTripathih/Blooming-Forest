@@ -89,7 +89,7 @@ const GolfSection = () => {
   return (
     <div className="relative w-full xxs:h-[100vh] xs:h-[110vh] xsm:h-[125vh] sm:h-[130vh] md:h-[200vh] bg-[#031c00] overflow-hidden text-white font-light flex flex-col">
       {/* Vector lines on the left */}
-      <div className="absolute xxs:left-[5rem] xs:left-[10rem] xsm:left-[13rem] sm:left-[22rem] md:left-[55rem] 2xl:left-[85rem] top-0 h-full z-0 flex gap-20 md:gap-40 2xl:gap-40">
+      <div className="absolute xxs:left-[5rem] xs:left-[10rem] xsm:left-[13rem] sm:left-[22rem] md:left-[55rem] 2xl:left-[85rem] top-0 h-full z-0 hidden md:flex gap-20 md:gap-40 2xl:gap-40">
         {lines.map((line, i) => (
           <div
             key={i}
