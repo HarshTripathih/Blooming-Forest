@@ -54,16 +54,27 @@ const content = [
 ]
 
 
-export default function UnrivalledViews() {
-  const [current, setCurrent] = useState(0)
+export default function UnrivalledViews({ scrollImageIndex  }) {
+  const [current, setCurrent] = useState(scrollImageIndex || 0);
+  const isScrollControlled = scrollImageIndex !== undefined;
+
   const thumbRef = useRef(null)
   const trackRef = useRef(null)
 
+   // sync internal state when prop changes
+  useEffect(() => {
+    if(isScrollControlled){
+      setCurrent(scrollImageIndex);
+    }
+  }, [scrollImageIndex]);
+
   const handlePrev = () => {
+    // if (isScrollControlled) return;
     setCurrent((prev) => (prev - 1 + images.length) % images.length)
   }
 
   const handleNext = () => {
+    // if (isScrollControlled) return;
     setCurrent((prev) => (prev + 1) % images.length)
   }
 
