@@ -287,13 +287,13 @@ const animate = () => {
             <MapView/>
           </section>
 
-      <section className="sticky top-0 xs:h-screen md:h-[125vh]">
-        <FourLevelsAppreciation/>
-      </section>
+        <section className="sticky top-0  md:h-[125vh]">
+          <FourLevelsAppreciation/>
+        </section>
 
-      <section className="sticky top-0 xxs:h-[140] xs:h-[120vh] md:h-[200vh]">
-        <AmenitiesSection/>
-      </section>
+        <section className="sticky top-0 xxs:h-[140] xs:h-[120vh] md:h-[200vh]">
+          <AmenitiesSection/>
+        </section>
 
       {/* Section 6 */}
       <section ref={interiorRef} className="bg-red-300 sticky top-0 xxs:h-[90vh] xs:h-[60vh] md:h-screen bg-white z-40">
@@ -312,7 +312,7 @@ const animate = () => {
           </div>
       </section>
       {/* Section 7 */}
-      <section className=" md:h-[400vh]">
+      <section className="md:h-[400vh]">
           <CarMove />
       </section>
 
@@ -459,7 +459,7 @@ const animate = () => {
 
       
       {/*------------- Testimonial section---------- */}
-      <section className="sticky top-0 h-[85] md:h-[78vh] 2xl:h-[80vh] bg-white">
+      <section className="sticky top-0 h-[85vh] md:h-[78vh] 2xl:h-[80vh] bg-white">
         <Testimonials/>
       </section>
 

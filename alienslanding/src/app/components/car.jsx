@@ -525,7 +525,7 @@ export default function CarMove() {
         })}
 
         {/* Car */}
-        <img src="/images/car.png" alt="Car" className={`absolute ${isMobile ? 'w-[15rem]' : 'w-64'} z-10`} style={{
+        <img src="/images/car.png" alt="Car" className={`absolute ${isMobile ? 'w-[10rem]' : 'w-64'} z-10`} style={{
           transform: isMobile
             ? `translateY(${carPos}px) translateX(-50%) rotate(180deg)`
             : `translateX(${carPos}px) translateY(-50%) rotate(90deg)`,

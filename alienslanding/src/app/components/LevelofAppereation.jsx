@@ -6,7 +6,19 @@ import Image from 'next/image'
 
 export default function FourLevelsAppreciation() {
   const [isPlaying, setIsPlaying] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
   const videoRef = useRef(null)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    handleResize() // Check once on mount
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     if (videoRef.current) {
@@ -16,7 +28,7 @@ export default function FourLevelsAppreciation() {
         setIsPlaying(false)
       })
     }
-  }, [])
+  }, [isMobile]) // re-trigger when video source changes
 
   const togglePlayback = () => {
     if (!videoRef.current) return
@@ -38,29 +50,29 @@ export default function FourLevelsAppreciation() {
         </h2>
       </div>
 
-      {/* Border Image Overlay */}
-        {/* <div className="absolute inset-0 z-10">
-          <Image
-            src="/images/videoborder.svg"
-            alt="Video Border"
-            layout="fill"
-            objectFit="cover"
-            className="w-full h-full"
-          />
-        </div> */}
-      {/* Video Box with Border */}
-      <div className="group relative w-full aspect-[16/9] bg-[#e8e8e8] rounded-lg overflow-hidden flex items-center justify-center">
-        
+          {/* Video Box */}
+            <div
+              className={`group relative ${
+                isMobile ? 'w-[100%] h-[430px] border border-lg rounded-lg' : 'w-full aspect-[16/9] border border-lg rounded-lg'
+              } bg-[#031c00] rounded-lg overflow-hidden flex items-center justify-center mx-auto`}
+            >
+            <video
+              ref={videoRef}
+              src={
+                isMobile
+                  ? 'https://res.cloudinary.com/dqqg1mr0u/video/upload/v1747462396/landupdated_mobile.mp4'
+                  : 'https://res.cloudinary.com/dqqg1mr0u/video/upload/v1747123772/landnewupdated_desktop.mp4'
+              }
+              className={`absolute inset-0 w-full h-full  ${
+                isMobile ? 'object-cover' : 'object-cover'
+              }`}
+              loop
+              muted
+              playsInline
+            />
 
-        {/* Video */}
-        <video
-          ref={videoRef}
-          src="https://res.cloudinary.com/dqqg1mr0u/video/upload/v1747123772/landnewupdated_c3tcgg.mp4"
-          className="absolute inset-0 w-full h-full object-cover border border-lg rounded-lg"
-          loop
-          muted
-          playsInline
-        />
+
+
 
         {/* Play/Pause Button */}
         <button
