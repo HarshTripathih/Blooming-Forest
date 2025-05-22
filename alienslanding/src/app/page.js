@@ -206,7 +206,7 @@ const animate = () => {
     <div className="relative w-full h-[600vh]"> {/* total height = sections × 100vh */}
     <SalesforceModalTrigger/>
       {/* Section 1 */}
-      <section className={`sticky top-0 h-screen w-full flex items-center justify-center bg-[#0d1c0f] ${bokorFont.variable}`}>
+      <section id="home" className={`sticky top-0 h-screen w-full flex items-center justify-center bg-[#0d1c0f] ${bokorFont.variable}`}>
         <div className="relative flex flex-col sm:flex-row w-full h-full overflow-hidden">
 
           {/* Left Video - Full width on mobile, 1/3 on larger screens */}
@@ -277,9 +277,14 @@ const animate = () => {
       </section>
 
         {/* Section 2 */}
+        <sction id="about">
           <GolfSection/>
+        </sction>
+          
         {/* Section 3 */}
+        <section id="projects">
           <UnrivalledScrollWrapper/>
+        </section>
         {/* Section 4 */}   
         <PrimeLocationScrollWrapper />
         {/* Section 5 */}
@@ -459,12 +464,12 @@ const animate = () => {
 
       
       {/*------------- Testimonial section---------- */}
-      <section className="sticky top-0 h-[85vh] md:h-[78vh] 2xl:h-[80vh] bg-white">
+      <section id="testimonials" className="sticky top-0 h-[85vh] md:h-[78vh] 2xl:h-[80vh] bg-white">
         <Testimonials/>
       </section>
 
       {/* Section 10 */}
-      <section className="sticky top-0  xs:h-[80vh] xsm:h-[85vh] md:h-screen bg-white">
+      <section id="gallary" className="sticky top-0  xs:h-[80vh] xsm:h-[85vh] md:h-screen bg-white">
           <GallerySection />
       </section>
 
@@ -498,11 +503,10 @@ const animate = () => {
       </section>
 
       {/* Section 12 */}
-      <section className="sticky top-0 h-screen">
+      <section id="contact" className="sticky top-0 h-screen">
           <Footer />
       </section>
-
-
+     
     </div>
 
   );

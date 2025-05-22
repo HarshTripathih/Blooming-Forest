@@ -60,8 +60,8 @@ export default function FourLevelsAppreciation() {
               ref={videoRef}
               src={
                 isMobile
-                  ? 'https://res.cloudinary.com/dqqg1mr0u/video/upload/v1747462396/landupdated_mobile.mp4'
-                  : 'https://res.cloudinary.com/dqqg1mr0u/video/upload/v1747123772/landnewupdated_desktop.mp4'
+                  ? 'https://res.cloudinary.com/dqqg1mr0u/video/upload/v1747920448/mobile_view_zqnjro.mp4'
+                  : 'https://res.cloudinary.com/dqqg1mr0u/video/upload/v1747920765/desktop_view_avprcg.mp4'
               }
               className={`absolute inset-0 w-full h-full  ${
                 isMobile ? 'object-cover' : 'object-cover'
